@@ -1,0 +1,175 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/resetfields.css);
+@import url('./fonts/inter.css');
+.body {
+    border: red solid 1px;
+    background-color: #000;
+    font-family: Inter;
+    font-style: normal;
+    color: #fff;
+}
+
+.page {
+    max-width: 880px;
+    margin: 0 auto 0 auto;
+}
+
+.header {
+    border: red solid 1px;
+    margin: 45px auto 0 auto;
+    border-bottom: 1px solid #545454;
+}
+
+.header__image {
+    width: 142px;
+    margin-bottom: 41px;
+}
+
+.person {
+    border: red solid 1px;
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.person__section {
+    display: flex;
+    align-items: center;
+}
+
+.person__image {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-right: 26px;
+}
+
+.person__name {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.person__employment {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.person__edit-button {
+    transition: opacity 0.5s;
+}
+
+.person__edit-button:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s;
+}
+
+.add-button__link {
+    border: 2px solid #fff;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+}
+
+.add-button__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in;
+}
+
+.add-button__icon {}
+
+.cards {
+    margin: 47.25px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px 17px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card__image {
+    /* border: red solid 1px; */
+    width: 100%;
+}
+
+.card__subsection {
+    /* border: red solid 1px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    height: 79px;
+    padding-left: 21px;
+    padding-right: 15px;
+    /* box-sizing: border-box; */
+}
+
+.card__description {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card__like-button {
+    height: 19px;
+    transition: opacity 0.5s;
+}
+
+.card__like-button:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s;
+}
+
+.footer {
+    margin: 67px auto 60px 0;
+}
+
+.footer__copyright {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #545454;
+}
+
+.popup__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    align-content: center;
+}
+
+.popup__form {
+    width: 430px;
+    height: 330px;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 4;
+    opacity: 1;
+    margin: auto;
+}

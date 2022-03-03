@@ -1,0 +1,7 @@
+.person__image {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-right: 36px;
+}

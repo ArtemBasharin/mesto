@@ -1,0 +1,14 @@
+.popup__grid {
+    display: grid;
+    grid-template-rows: 32px 330px;
+    grid-template-columns: 430px 32px;
+    grid-template-areas: ".popup__dummy .popup__close" ".popup__form .popup__dummy";
+    gap: 8px;
+    margin: auto;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+    .popup__grid {
+        display: block;
+    }
+}

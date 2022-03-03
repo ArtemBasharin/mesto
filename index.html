@@ -18,20 +18,24 @@
             <div class="person__section">
                 <img class="person__image" src="./images/Cousteau.png" alt="Жак Кусто">
                 <div class="person__description">
-                    <h2 class="person__name">Жак-Ив Кусто
-                        <a href=""><img class="person__edit-button" src="./images/pen.svg" alt="Кнопка редактировать"></a>
-                    </h2>
+                    <div class="person__subsection">
+                        <h2 class="person__name">Жак-Ив Кусто</h2>
+                        <img class="person__edit-button" src="./images/pen.svg" alt="Кнопка редактировать">
+                    </div>
                     <p class="person__employment">Исследователь океана</p>
                 </div>
             </div>
-            <a class="add-button__link" href=""><img class="add-button__icon" src="./images/plus-icon.svg" alt=""></a>
+
+            <button class="add-button">
+                <img class="add-button__icon" src="./images/plus-icon.svg" alt="">
+            </button>
         </section>
         <section class="cards">
             <div class="card">
                 <img class="card__image" src="./images/brian-lawson.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Йога</h2>
-                    <a class="card__like-button" href=""> <img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
 
@@ -39,7 +43,7 @@
                 <img class="card__image" src="./images/caju-gomes.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Отдых</h2>
-                    <a class="card__like-button" href=""><img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
 
@@ -47,7 +51,7 @@
                 <img class="card__image" src="./images/chandri-anggara.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Друзья</h2>
-                    <a class="card__like-button" href=""><img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
 
@@ -55,7 +59,7 @@
                 <img class="card__image" src="./images/steph.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Хобби</h2>
-                    <a class="card__like-button" href=""><img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
 
@@ -63,7 +67,7 @@
                 <img class="card__image" src="./images/tim-foster.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Спорт</h2>
-                    <a class="card__like-button" href=""><img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
 
@@ -71,7 +75,7 @@
                 <img class="card__image" src="./images/jon-tyson.jpg" alt="">
                 <div class="card__subsection">
                     <h2 class="card__description">Самообладание</h2>
-                    <a class="card__like-button" href=""><img src="./images/heart.svg" alt=""></a>
+                    <button class="card__like-button" type="button"></button>
                 </div>
             </div>
         </section>
@@ -79,12 +83,22 @@
             <p class="footer__copyright">
                 &#169;2020 Mesto Russia</p>
         </footer>
-        <div class="popup__container">
-            <form class="popup__form">
 
-            </form>
+        <div class="popup__container popup__container_hide">
+            <div class="popup__grid">
+                <p class="popup__dummy"></p>
+                <img class="popup__close" src="./images/close-icon.svg" alt="">
+                <form class="popup__form">
+                    <h3 class="popup__title">Редактировать&nbsp;профиль</h3>
+                    <input class="popup__name" type="text" name="name" value="name">
+                    <input class="popup__employment" type="text" name="employment" value="employment">
+                    <button class="popup__button" type="submit">Сохранить</button>
+                </form>
+                <p class="popup__dummy"></p>
+            </div>
         </div>
 
+        <script src="./script.js"></script>
     </div>
 
 

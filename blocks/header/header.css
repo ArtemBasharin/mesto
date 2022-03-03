@@ -1,0 +1,13 @@
+.header {
+    margin: 45px auto 0 auto;
+    border-bottom: 1px solid #545454;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+    .header {
+        position: relative;
+        left: -19px;
+        width: 100vw;
+        margin: 0;
+    }
+}

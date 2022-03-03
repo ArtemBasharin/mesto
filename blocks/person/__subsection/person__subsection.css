@@ -1,0 +1,11 @@
+.person__subsection {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+    .person__subsection {
+        gap: 10px;
+    }
+}

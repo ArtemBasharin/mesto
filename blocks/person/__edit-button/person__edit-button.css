@@ -1,0 +1,14 @@
+.person__edit-button {
+    transition: opacity 0.5s;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+    .person__edit-button {
+        width: 18px;
+    }
+}
+
+.person__edit-button:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s;
+}

@@ -1,6 +1,6 @@
     @import url('./vendor/normalize.css');
     @import url('./vendor/resetfields.css');
-    @import url('./fonts/inter.css');
+    @import url('./vendor/fonts/inter.css');
     @import url('./blocks/body/body.css');
     @import url('./blocks/page/page.css');
     @import url('./blocks/header/header.css');
@@ -22,13 +22,15 @@
     @import url('./blocks/card/__subsection/card__subsection.css');
     @import url('./blocks/footer/footer.css');
     @import url('./blocks/footer/__copyright/footer__copyright.css');
-    @import url('./blocks/popup/__button/popup__button.css');
+    @import url('./blocks/popup/popup.css');
+    @import url('./blocks/popup/__input/popup__input.css');
+    @import url('./blocks/popup/__input/_type/popup__input_type_button.css');
+    @import url('./blocks/popup/__input/_type/popup__input_type_employment.css');
+    @import url('./blocks/popup/__input/_type/popup__input_type_name.css');
+    @import url('./blocks/popup/_opened/popup_opened.css');
     @import url('./blocks/popup/__close/popup__close.css');
     @import url('./blocks/popup/__container/popup__container.css');
     @import url('./blocks/popup/__container/_hide/popup__container_hide.css');
-    @import url('./blocks/popup/__employment/popup__employment.css');
     @import url('./blocks/popup/__form/popup__form.css');
     @import url('./blocks/popup/__grid/popup__grid.css');
-    @import url('./blocks/popup/__name/popup__name.css');
     @import url('./blocks/popup/__title/popup__title.css');
-    @import url('./blocks/popup/__dummy/popup__dummy.css');

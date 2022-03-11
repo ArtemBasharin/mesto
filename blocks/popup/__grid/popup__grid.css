@@ -1,17 +1,17 @@
 .popup__grid {
-    display: grid;
-    grid-template-rows: 32px 330px;
-    grid-template-columns: 430px 32px;
-    grid-template-areas: ".popup__dummy .popup__close" ".popup__form .popup__dummy";
-    gap: 8px;
+    width: 430px;
+    height: 330px;
+    display: flex;
+    align-items: end;
+    justify-items: end;
     margin: auto;
+    position: relative;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
     .popup__grid {
-        display: flex;
-        flex-direction: column;
-        column-gap: 8px;
-        margin: auto;
+        margin: auto 19px auto 19px;
+        width: 100%;
+        height: 322px;
     }
 }

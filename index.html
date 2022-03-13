@@ -20,13 +20,13 @@
                 <div class="person__description">
                     <div class="person__subsection">
                         <h1 class="person__name">Жак-Ив Кусто</h1>
-                        <img class="person__edit-button" src="./images/pen.svg" alt="Кнопка редактировать">
+                        <button class="person__edit-button"></button>
                     </div>
                     <p class="person__employment">Исследователь океана</p>
                 </div>
             </div>
 
-            <button class="add-button">
+            <button class="person__add-button add-button">
                 <img class="add-button__icon" src="./images/plus-icon.svg" alt="Добавить">
             </button>
         </section>
@@ -90,14 +90,14 @@
                     <h3 class="popup__title">Редактировать&nbsp;профиль</h3>
                     <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Введите имя">
                     <input class="popup__input popup__input_type_employment" type="text" name="employment" placeholder="Введите род деятельности">
-                    <input class="popup__input popup__input_type_button" type="submit">
+                    <button class="popup__input popup__input_type_button" type="submit">Сохранить</button>
                 </form>
                 <!-- В форме не стал указывать placeholder т.к. и имя и род занятий уже изначально заполнены -->
             </div>
 
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./scripts/script.js"></script>
     <!-- https://source.unsplash.com/random/?science,tech -->
 </body>
 

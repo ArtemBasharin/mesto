@@ -20,11 +20,11 @@ function closePopup() {
 };
 
 function saveProfile(evt) {
-
+    evt.preventDefault();
     nameValue.textContent = document.querySelector('.popup__input_type_name').value; //что нужно здесь исправить не понял
     employmentValue.textContent = document.querySelector('.popup__input_type_employment').value; // и здесь тоже. 24  и 25 строки присваивают новые значения person__name и person__employment. В 5 и 7 строках объявлены константы. Не пойму, как иначе
-    popup.classList.remove('popup_opened'); // закрываем ПОПАП после записи новых значений, это не дубль, а вызов функции в другом случае
-    evt.preventDefault();
+    closePopup();
+
 };
 
 

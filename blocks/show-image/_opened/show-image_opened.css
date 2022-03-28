@@ -1,4 +1,4 @@
-.popup_opened {
+.show-image_opened {
     display: flex;
     animation: fade-in .5s;
     opacity: 1;

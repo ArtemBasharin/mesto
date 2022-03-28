@@ -9,3 +9,17 @@
     align-content: center;
     position: fixed;
 }
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.popup-fade-in {
+    display: flex;
+    animation: fade-out .5s;
+}

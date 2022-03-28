@@ -26,12 +26,12 @@
                 </div>
             </div>
 
-            <button class="person__add-button add-button">
+            <button class="add-button">
                 <img class="add-button__icon" src="./images/plus-icon.svg" alt="Добавить">
             </button>
         </section>
         <section class="cards">
-            <article class="card">
+            <!-- <article class="card">
                 <img class="card__image" src="./images/brian-lawson.jpg" alt="Йога">
                 <div class="card__subsection">
                     <h2 class="card__description">Йога</h2>
@@ -77,7 +77,7 @@
                     <h2 class="card__description">Самообладание</h2>
                     <button class="card__like-button" type="button"></button>
                 </div>
-            </article>
+            </article> -->
         </section>
         <footer class="footer">
             <p class="footer__copyright">
@@ -92,13 +92,43 @@
                     <input class="popup__input popup__input_type_employment" type="text" name="employment" placeholder="Введите род деятельности">
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
-                <!-- В форме не стал указывать placeholder т.к. и имя и род занятий уже изначально заполнены -->
             </div>
-
         </div>
+        <div class="cardAdder">
+            <!-- не  забудь применить модификаторы, это из прошлой формы -->
+            <div class="popup__grid">
+                <button class="popup__close cardAdder__close"></button>
+                <form class="popup__form cardAdder__form" name="profile-form">
+                    <h3 class="popup__title">Новое&nbsp;место</h3>
+                    <input class="popup__input popup__input_type_name popup__input_type_cardname" type="text" name="cardName" placeholder="Введите название">
+                    <input class="popup__input popup__input_type_link" type="text" name="cardLink" placeholder="Введите url картинки">
+                    <button class="popup__submit-button popup__submit-button_addcard" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+
+        <template class="template">
+        <article class="card">
+            <img class="card__image" src="" alt="">
+            <button class="card__trash-button" type="button"></button>      
+            <div class="card__subsection">
+                <h2 class="card__description">Самообладание</h2>
+                <button class="card__like-button" type="button"></button>   
+            </div>
+        </article>
+        </template>
+
+        <div class="show-image">
+            <div class="show-image__container">
+                <button class="popup__close show-image__close"></button>
+                <img class="show-image__img" src="" alt="">
+                <p class="show-image__subscription"></p>
+            </div>
+        </div>
+
+        <script src="./scripts/script.js"></script>
+        <!-- https://source.unsplash.com/random/?science,tech -->
     </div>
-    <script src="./scripts/script.js"></script>
-    <!-- https://source.unsplash.com/random/?science,tech -->
 </body>
 
 </html>

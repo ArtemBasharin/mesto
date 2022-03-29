@@ -100,9 +100,9 @@ closeAdderButton.addEventListener('click', closeAdder);
 function addCard(evt) {
     evt.preventDefault();
     const card = cardTemplate.querySelector('.card').cloneNode(true);
-    card.querySelector('.card__image').src = document.querySelector('.popup__input_type_link').value;
-    card.querySelector('.card__image').alt = document.querySelector('.popup__input_type_cardname').value;
-    card.querySelector('.card__description').textContent = document.querySelector('.popup__input_type_cardname').value;
+    card.querySelector('.card__image').src = document.querySelector('.cardAdder__input_type_link').value;
+    card.querySelector('.card__image').alt = document.querySelector('.cardAdder__input_type_cardname').value;
+    card.querySelector('.card__description').textContent = document.querySelector('.cardAdder__input_type_cardname').value;
     listeners(card);
     cardList.append(card);
     closeAdder();

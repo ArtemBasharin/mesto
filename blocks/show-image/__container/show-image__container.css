@@ -1,8 +1,7 @@
 .show-image__container {
-    width: 430px;
-    height: 330px;
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    align-items: flex-start;
     justify-items: end;
     margin: auto;
     position: relative;
@@ -10,8 +9,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
     .show-image__container {
-        margin: auto 19px auto 19px;
+        margin: auto 40px auto 40px;
         width: 100%;
-        height: 322px;
     }
 }

@@ -1,4 +1,4 @@
-.cardAdder_opened {
+.cardPopup_opened {
     display: flex;
     animation: fade-in .5s;
     opacity: 1;

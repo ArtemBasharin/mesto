@@ -1,13 +1,16 @@
-.cardAdder__input {
+.cardPopup__input_type_name {
+    margin-top: 54px;
     font-size: 14px;
     font-weight: 400;
+    line-height: 20px;
     width: 350px;
     border: none;
     border-bottom: 1px solid #545454;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-    .cardAdder__input {
+    .cardPopup__input_type_name {
+        margin-top: 75px;
         width: 100%;
     }
 }

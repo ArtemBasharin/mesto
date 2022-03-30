@@ -1,16 +1,15 @@
-.cardAdder__input_type_name {
-    margin-top: 54px;
+.cardPopup__input_type_employment {
+    margin-top: 30px;
     font-size: 14px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 27px;
     width: 350px;
     border: none;
     border-bottom: 1px solid #545454;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-    .cardAdder__input_type_name {
-        margin-top: 75px;
+    .cardPopup__input_type_employment {
         width: 100%;
     }
 }

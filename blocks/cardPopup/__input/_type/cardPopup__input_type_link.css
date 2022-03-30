@@ -1,4 +1,4 @@
-.cardAdder__input_type_link {
+.cardPopup__input_type_link {
     margin-top: 30px;
     font-size: 14px;
     font-weight: 400;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-    .cardAdder__input_type_link {
+    .cardPopup__input_type_link {
         width: 100%;
     }
 }

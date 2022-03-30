@@ -1,4 +1,4 @@
-.cardAdder__submit-button {
+.cardPopup__submit-button {
     width: 358px;
     height: 50px;
     margin: 48px auto;
@@ -13,14 +13,14 @@
     transition: opacity 0.5s;
 }
 
-.cardAdder__submit-button:hover {
+.cardPopup__submit-button:hover {
     cursor: pointer;
     opacity: 0.8;
     transition: opacity 0.5s;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-    .cardAdder__submit-button {
+    .cardPopup__submit-button {
         padding: 0;
         width: 100%;
         margin: 45px auto 0 auto;

@@ -1,15 +1,17 @@
 const profileButton = document.querySelector('.person__edit-button');
 const profileCloseButton = document.querySelector('.popup__close');
 const profileForm = document.querySelector('.popup__form')
-// const popup = document.querySelector('.popup');
+    // const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.profile-popup');
 const nameContainer = document.querySelector('.popup__input_type_name');
 const nameValue = document.querySelector('.person__name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const employmentValue = document.querySelector('.person__employment');
 
+document.addEventListener('DOMContentLoaded', saveProfile);
+
 function showPopup(popup) {
-      popup.classList.add('popup_opened');
+    popup.classList.add('popup_opened');
 };
 
 function closePopup(popup) {
@@ -25,8 +27,8 @@ function saveProfile(evt) {
     closePopup(profilePopup);
 };
 
-profileButton.addEventListener('click', () => {showPopup(profilePopup)});
-profileCloseButton.addEventListener('click', () => {closePopup(profilePopup)});
+profileButton.addEventListener('click', () => { showPopup(profilePopup) });
+profileCloseButton.addEventListener('click', () => { closePopup(profilePopup) });
 profileForm.addEventListener('submit', saveProfile);
 
 
@@ -60,11 +62,11 @@ const initialCards = [{
 
 //render initial cards from some array
 
-const cardList = document.querySelector('.cards'); 
-const cardTemplate = document.querySelector('.template').content; 
+const cardList = document.querySelector('.cards');
+const cardTemplate = document.querySelector('.template').content;
 
 function createCard(item) {
-    const cardElement = cardTemplate.querySelector('.card').cloneNode(true); 
+    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     //если константы вынести из функции, то карточки будут перезаписываться на одно и то же место и renderCard перестает работать
     const cardImage = cardElement.querySelector('.card__image');
     cardImage.src = item.link;
@@ -72,6 +74,7 @@ function createCard(item) {
     cardElement.querySelector('.card__description').textContent = item.name;
     setListeners(cardElement);
     return cardElement;
+
 };
 
 function renderCard(arr) {
@@ -85,26 +88,29 @@ renderCard(initialCards);
 
 //form for adding
 
-const adder = document.querySelector('.cardPopup');
+const cardPopup = document.querySelector('.cardPopup');
 const adderButton = document.querySelector('.add-button');
 const closePopupButton = document.querySelector('.cardPopup__close');
 const cardForm = document.querySelector('.cardPopup__form');
 
 
-adderButton.addEventListener('click', () => {showPopup(adder)});
-closePopupButton.addEventListener('click', () => {closePopup(adder)});
-
+adderButton.addEventListener('click', () => { showPopup(cardPopup) });
+closePopupButton.addEventListener('click', () => { closePopup(cardPopup) });
+const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
+const inputLink = document.querySelector('.cardPopup__input_type_link');
 
 
 function addCard(evt) {
     evt.preventDefault();
     const item = {
-        name: document.querySelector('.cardPopup__input_type_cardname').value,
-        link: document.querySelector('.cardPopup__input_type_link').value
+        name: inputCardname.value,
+        link: inputLink.value
     }
     const card = createCard(item)
     cardList.prepend(card);
-    closePopup(adder);
+    cardForm.reset();
+    closePopup(cardPopup);
+
 }
 
 cardForm.addEventListener('submit', addCard);
@@ -117,7 +123,7 @@ function deleteCard(event) {
 
 const popupImage = document.querySelector('.show-image__img');
 const popupCard = document.querySelector('.show-image');
-
+const imageCaption = document.querySelector('.show-image__subscription');
 
 function setListeners(card) {
     card.querySelector('.card__like-button').addEventListener('click', event => {
@@ -127,8 +133,8 @@ function setListeners(card) {
     card.querySelector('.card__image').addEventListener('click', event => {
         showPopup(popupCard);
         popupImage.src = event.target.src;
-        popupImage.alt = card.querySelector('.card__subsection').querySelector('.card__description').textContent;
-        document.querySelector('.show-image__subscription').textContent = popupImage.alt;
+        popupImage.alt = event.target.alt;
+        imageCaption.textContent = popupImage.alt;
     });
 }
 

@@ -8,7 +8,6 @@ const nameValue = document.querySelector('.person__name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const employmentValue = document.querySelector('.person__employment');
 
-document.addEventListener('DOMContentLoaded', saveProfile);
 
 function showPopup(popup) {
     popup.classList.add('popup_opened');
@@ -18,17 +17,23 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
 
-function saveProfile(evt) {
-    evt.preventDefault();
+function  fillProfileForm(){
     nameContainer.setAttribute('value', nameValue.textContent);
     employmentContainer.setAttribute('value', employmentValue.textContent);
+}
+
+function saveProfile(evt) {
+    evt.preventDefault();
+    fillProfileForm();
     nameValue.textContent = nameContainer.value;
     employmentValue.textContent = employmentContainer.value;
     closePopup(profilePopup);
 };
 
-profileButton.addEventListener('click', () => { showPopup(profilePopup) });
-profileCloseButton.addEventListener('click', () => { closePopup(profilePopup) });
+profileButton.addEventListener('click', () => {
+    showPopup(profilePopup)
+    fillProfileForm()});
+profileCloseButton.addEventListener('click', () => {closePopup(profilePopup)});
 profileForm.addEventListener('submit', saveProfile);
 
 

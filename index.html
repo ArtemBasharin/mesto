@@ -25,35 +25,41 @@
                     <p class="person__employment">Исследователь океана</p>
                 </div>
             </div>
-
             <button class="add-button">
                 <img class="add-button__icon" src="./images/plus-icon.svg" alt="Добавить">
             </button>
         </section>
         <section class="cards">
+
         </section>
         <footer class="footer">
             <p class="footer__copyright">
                 &#169;2020 Mesto Russia</p>
         </footer>
+
         <div class="popup profile-popup">
             <div class="popup__grid">
                 <button class="popup__close"></button>
-                <form class="popup__form" name="profile-form">
+                <form class="popup__form" name="profile-form" novalidate>
                     <h3 class="popup__title">Редактировать&nbsp;профиль</h3>
-                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Введите имя">
-                    <input class="popup__input popup__input_type_employment" type="text" name="employment" placeholder="Введите род деятельности">
+                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Введите имя"  required minlength="2" maxlength="40">
+                    <span class="popup__input_name-error name-error"></span>
+                    <input class="popup__input popup__input_type_employment" type="text" name="employment" placeholder="Введите род деятельности" required minlength="2" maxlength="200">
+                    <span class="popup__form-input-error employment-error"></span>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
+
         <div class="popup cardPopup">
             <div class="cardPopup__container">
                 <button class="popup__close cardPopup__close"></button>
-                <form class="cardPopup__form" name="adder-form">
+                <form class="cardPopup__form" name="adder-form" novalidate>
                     <h3 class="cardPopup__title">Новое&nbsp;место</h3>
                     <input class="cardPopup__input cardPopup__input_type_name cardPopup__input_type_cardname" type="text" name="cardName" placeholder="Введите название">
+                    <span class="cardPopup__input_type_name-error place-error"></span>
                     <input class="cardPopup__input cardPopup__input_type_link" type="text" name="cardLink" placeholder="Введите url картинки">
+                    <span class="cardPopup__input_type_link-error link-error"></span>
                     <button class="cardPopup__submit-button cardPopup__submit-button_addcard" type="submit">Создать</button>
                 </form>
             </div>
@@ -79,6 +85,7 @@
         </div>
 
         <script src="./scripts/script.js"></script>
+        <script src="./scripts/validate.js"></script>
         <!-- https://source.unsplash.com/random/?science,tech -->
     </div>
 </body>

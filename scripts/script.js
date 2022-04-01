@@ -146,3 +146,4 @@ function setListeners(card) {
 document.querySelector('.show-image__close').addEventListener('click', () => {
     closePopup(popupCard);
 });
+

@@ -11,13 +11,31 @@ const employmentValue = document.querySelector('.person__employment');
 
 function showPopup(popup) {
     popup.classList.add('popup_opened');
+    handleOverlayClick(popup);
+    document.addEventListener('keydown', handleEscButton);
 };
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
 
-function  fillProfileForm(){
+function handleEscButton(evt) {
+    const showedPopup = document.querySelector('.popup_opened')
+    if (evt.keyCode === 27) {
+        closePopup(showedPopup)
+    }
+}
+
+function handleOverlayClick(popup) {
+    popup.addEventListener('click', evt => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        };
+    });
+}
+
+
+function fillProfileForm() {
     nameContainer.setAttribute('value', nameValue.textContent);
     employmentContainer.setAttribute('value', employmentValue.textContent);
 }
@@ -32,8 +50,9 @@ function saveProfile(evt) {
 
 profileButton.addEventListener('click', () => {
     showPopup(profilePopup)
-    fillProfileForm()});
-profileCloseButton.addEventListener('click', () => {closePopup(profilePopup)});
+    fillProfileForm()
+});
+profileCloseButton.addEventListener('click', () => { closePopup(profilePopup) });
 profileForm.addEventListener('submit', saveProfile);
 
 
@@ -146,4 +165,3 @@ function setListeners(card) {
 document.querySelector('.show-image__close').addEventListener('click', () => {
     closePopup(popupCard);
 });
-

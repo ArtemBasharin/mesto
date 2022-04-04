@@ -42,10 +42,10 @@
                 <button class="popup__close"></button>
                 <form class="popup__form" name="profile-form" novalidate>
                     <h3 class="popup__title">Редактировать&nbsp;профиль</h3>
-                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Введите имя"  required minlength="2" maxlength="40">
-                    <span class="popup__input_name-error name-error"></span>
-                    <input class="popup__input popup__input_type_employment" type="text" name="employment" placeholder="Введите род деятельности" required minlength="2" maxlength="200">
-                    <span class="popup__form-input-error employment-error"></span>
+                    <input class="popup__input popup__input_type_name" id='name' type="text" name="name" placeholder="Введите имя" required minlength="2" maxlength="40">
+                    <span class="popup__input-error name-error"></span>
+                    <input class="popup__input popup__input_type_employment" id='employment' type="text" name="employment" placeholder="Введите род деятельности" required minlength="2" maxlength="200">
+                    <span class="popup__input-error employment-error"></span>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -53,14 +53,14 @@
 
         <div class="popup cardPopup">
             <div class="cardPopup__container">
-                <button class="popup__close cardPopup__close"></button>
-                <form class="cardPopup__form" name="adder-form" novalidate>
+                <button class="cardPopup__close popup__close "></button>
+                <form class="cardPopup__form popup__form" name="adder-form" novalidate>
                     <h3 class="cardPopup__title">Новое&nbsp;место</h3>
-                    <input class="cardPopup__input cardPopup__input_type_name cardPopup__input_type_cardname" type="text" name="cardName" placeholder="Введите название">
-                    <span class="cardPopup__input_type_name-error place-error"></span>
-                    <input class="cardPopup__input cardPopup__input_type_link" type="text" name="cardLink" placeholder="Введите url картинки">
-                    <span class="cardPopup__input_type_link-error link-error"></span>
-                    <button class="cardPopup__submit-button cardPopup__submit-button_addcard" type="submit">Создать</button>
+                    <input class="cardPopup__input cardPopup__input_type_name cardPopup__input_type_cardname popup__input" id='place' type="text" name="cardName" placeholder="Введите название" required minlength="2" maxlength="30">
+                    <span class="cardPopup__input-error place-error"></span>
+                    <input class="cardPopup__input cardPopup__input_type_link popup__input" id='link' type="url" name="cardLink" placeholder="Введите url картинки" required>
+                    <span class="cardPopup__input-error link-error"></span>
+                    <button class="cardPopup__submit-button cardPopup__submit-button_addcard popup__submit-button popup__submit-button_disabled" type="submit" disabled>Создать</button>
                 </form>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <img class="card__image" src="#" alt="#">
             <button class="card__trash-button" type="button"></button>      
             <div class="card__subsection">
-                <h2 class="card__description">Самообладание</h2>
+                <h2 class="card__description"></h2>
                 <button class="card__like-button" type="button"></button>   
             </div>
         </article>

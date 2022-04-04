@@ -1,7 +1,7 @@
 .popup__submit-button {
     width: 358px;
     height: 50px;
-    margin: 48px auto;
+    margin: 20px auto;
     color: #fff;
     background-color: #000;
     border-radius: 2px;
@@ -23,7 +23,7 @@
     .popup__submit-button {
         padding: 0;
         width: 100%;
-        margin: 45px auto 0 auto;
+        margin: 15px auto 0 auto;
         font-size: 14px;
         line-height: 17px;
         transition: opacity 0.5s;

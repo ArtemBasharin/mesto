@@ -6,7 +6,6 @@
     border-radius: 10px;
     z-index: 100;
     padding-left: 36px;
-    height: 100%;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {

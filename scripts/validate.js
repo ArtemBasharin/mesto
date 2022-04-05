@@ -49,6 +49,7 @@ const enableValidation = (conf) => {
 
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
+        console.log(inputElement.validity);
         return !inputElement.validity.valid;
     });
 };

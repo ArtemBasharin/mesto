@@ -1,60 +1,90 @@
 const profileButton = document.querySelector('.person__edit-button');
 const profileCloseButton = document.querySelector('.popup__close');
 const profileForm = document.querySelector('.popup__form')
-    // const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.profile-popup');
 const nameContainer = document.querySelector('.popup__input_type_name');
 const nameValue = document.querySelector('.person__name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const employmentValue = document.querySelector('.person__employment');
+const popupMAin = document.querySelector('.popup');
+const cardPopup = document.querySelector('.cardPopup');
+const popupCard = document.querySelector('.show-image');
+
+
+// const popupsArr = Array.from(document.querySelectorAll('.popup'));
 
 
 function showPopup(popup) {
     popup.classList.add('popup_opened');
-    handleOverlayClick(popup);
     document.addEventListener('keydown', handleEscButton);
 };
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleEscButton);
 };
 
 function handleEscButton(evt) {
-    const showedPopup = document.querySelector('.popup_opened')
-    if (evt.keyCode === 27) {
-        closePopup(showedPopup)
+    if (evt.key === 'Escape') {
+        const showedPopup = document.querySelector('.popup_opened');
+        closePopup(showedPopup);
     }
 }
 
-function handleOverlayClick(popup) {
-    popup.addEventListener('click', evt => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)
-        };
-    });
-}
+profilePopup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+        const showedPopup = document.querySelector('.popup_opened');
+        closePopup(showedPopup);
+    }
+});
 
+cardPopup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+        const showedPopup = document.querySelector('.popup_opened');
+        closePopup(showedPopup);
+    }
+});
+
+popupCard.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+        const showedPopup = document.querySelector('.popup_opened');
+        closePopup(showedPopup);
+    }
+});
+
+
+// function handleOverlayClick(evt) {
+//     for (var i = 0; i < popupsArr.length; i++) {
+//         popupsArr[i].addEventListener('click', evt => {
+//             if (evt.target.classList.contains('popup_opened')) {
+//                 closePopup()
+//             };
+//         });
+//     };
+// }
 
 function fillProfileForm() {
-    nameContainer.setAttribute('value', nameValue.textContent);
-    employmentContainer.setAttribute('value', employmentValue.textContent);
+    nameContainer.value = nameValue.textContent;
+    employmentContainer.value = employmentValue.textContent;
 }
 
 function saveProfile(evt) {
     evt.preventDefault();
-    fillProfileForm();
+
     nameValue.textContent = nameContainer.value;
     employmentValue.textContent = employmentContainer.value;
     closePopup(profilePopup);
 };
 
 profileButton.addEventListener('click', () => {
-    showPopup(profilePopup)
-    fillProfileForm()
+    fillProfileForm();
+    showPopup(profilePopup);
 });
-profileCloseButton.addEventListener('click', () => { closePopup(profilePopup) });
+profileCloseButton.addEventListener('click', () => {
+    profileForm.reset();
+    closePopup(profilePopup);
+});
 profileForm.addEventListener('submit', saveProfile);
-
 
 
 const initialCards = [{
@@ -85,8 +115,7 @@ const initialCards = [{
 
 
 //render initial cards from some array
-
-const cardList = document.querySelector('.cards');
+const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.template').content;
 
 function createCard(item) {
@@ -104,7 +133,7 @@ function createCard(item) {
 function renderCard(arr) {
     arr.forEach(element => {
         const card = createCard(element);
-        cardList.append(card);
+        cardsContainer.append(card);
     });
 };
 renderCard(initialCards);
@@ -112,7 +141,7 @@ renderCard(initialCards);
 
 //form for adding
 
-const cardPopup = document.querySelector('.cardPopup');
+
 const adderButton = document.querySelector('.add-button');
 const closePopupButton = document.querySelector('.cardPopup__close');
 const cardForm = document.querySelector('.cardPopup__form');
@@ -122,23 +151,22 @@ adderButton.addEventListener('click', () => { showPopup(cardPopup) });
 closePopupButton.addEventListener('click', () => { closePopup(cardPopup) });
 const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
 const inputLink = document.querySelector('.cardPopup__input_type_link');
-
+const cardPopupButton = document.querySelector('.cardPopup__submit-button');
 
 function addCard(evt) {
     evt.preventDefault();
+    cardPopupButton.classList.add('popup__submit-button_disabled');
     const item = {
         name: inputCardname.value,
         link: inputLink.value
     }
     const card = createCard(item)
-    cardList.prepend(card);
+    cardsContainer.prepend(card);
     cardForm.reset();
     closePopup(cardPopup);
-
 }
 
 cardForm.addEventListener('submit', addCard);
-
 
 function deleteCard(event) {
     const cardNear = event.currentTarget.closest('.card');
@@ -146,7 +174,7 @@ function deleteCard(event) {
 }
 
 const popupImage = document.querySelector('.show-image__img');
-const popupCard = document.querySelector('.show-image');
+
 const imageCaption = document.querySelector('.show-image__subscription');
 
 function setListeners(card) {
@@ -155,10 +183,10 @@ function setListeners(card) {
     });
     card.querySelector('.card__trash-button').addEventListener('click', deleteCard);
     card.querySelector('.card__image').addEventListener('click', event => {
-        showPopup(popupCard);
         popupImage.src = event.target.src;
         popupImage.alt = event.target.alt;
         imageCaption.textContent = popupImage.alt;
+        showPopup(popupCard);
     });
 }
 

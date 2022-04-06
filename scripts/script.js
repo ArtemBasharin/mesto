@@ -32,23 +32,20 @@ function handleEscButton(evt) {
 }
 
 profilePopup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-        const showedPopup = document.querySelector('.popup_opened');
-        closePopup(showedPopup);
+    if (evt.target.classList.contains('popup')) {
+        closePopup(profilePopup);
     }
 });
 
 cardPopup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-        const showedPopup = document.querySelector('.popup_opened');
-        closePopup(showedPopup);
+    if (evt.target.classList.contains('popup')) {
+        closePopup(cardPopup);
     }
 });
 
 popupCard.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-        const showedPopup = document.querySelector('.popup_opened');
-        closePopup(showedPopup);
+    if (evt.target.classList.contains('popup')) {
+        closePopup(popupCard);
     }
 });
 
@@ -81,8 +78,8 @@ profileButton.addEventListener('click', () => {
     showPopup(profilePopup);
 });
 profileCloseButton.addEventListener('click', () => {
-    profileForm.reset();
     closePopup(profilePopup);
+    profileForm.reset();
 });
 profileForm.addEventListener('submit', saveProfile);
 
@@ -155,15 +152,15 @@ const cardPopupButton = document.querySelector('.cardPopup__submit-button');
 
 function addCard(evt) {
     evt.preventDefault();
-    cardPopupButton.classList.add('popup__submit-button_disabled');
+    cardPopupButton.setAttribute('disabled');
     const item = {
         name: inputCardname.value,
         link: inputLink.value
     }
     const card = createCard(item)
     cardsContainer.prepend(card);
-    cardForm.reset();
     closePopup(cardPopup);
+    cardForm.reset();
 }
 
 cardForm.addEventListener('submit', addCard);

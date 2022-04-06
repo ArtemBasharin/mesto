@@ -1,5 +1,5 @@
 .show-image__img {
-    width: 100%;
+    max-width: 75vw;
     max-height: 75vh;
     object-fit: contain;
 }

@@ -152,7 +152,7 @@ const cardPopupButton = document.querySelector('.cardPopup__submit-button');
 
 function addCard(evt) {
     evt.preventDefault();
-    cardPopupButton.setAttribute('disabled');
+
     const item = {
         name: inputCardname.value,
         link: inputLink.value
@@ -160,6 +160,8 @@ function addCard(evt) {
     const card = createCard(item)
     cardsContainer.prepend(card);
     closePopup(cardPopup);
+    cardPopupButton.classList.add('popup__submit-button_disabled');
+    cardPopupButton.setAttribute('disabled', '');
     cardForm.reset();
 }
 

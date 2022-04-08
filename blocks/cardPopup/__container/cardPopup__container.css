@@ -10,8 +10,8 @@
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
     .cardPopup__container {
-        margin: auto 19px auto 19px;
-        width: 100%;
+        margin: auto;
+        width: 282px;
         height: 322px;
     }
 }

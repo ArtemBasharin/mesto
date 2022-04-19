@@ -11,8 +11,6 @@ const cardPopup = document.querySelector('.cardPopup');
 const popupCard = document.querySelector('.show-image');
 
 
-// const popupsArr = Array.from(document.querySelectorAll('.popup'));
-
 
 function showPopup(popup) {
     popup.classList.add('popup_opened');
@@ -49,16 +47,6 @@ popupCard.addEventListener('click', (evt) => {
     }
 });
 
-
-// function handleOverlayClick(evt) {
-//     for (var i = 0; i < popupsArr.length; i++) {
-//         popupsArr[i].addEventListener('click', evt => {
-//             if (evt.target.classList.contains('popup_opened')) {
-//                 closePopup()
-//             };
-//         });
-//     };
-// }
 
 function fillProfileForm() {
     nameContainer.value = nameValue.textContent;
@@ -117,7 +105,6 @@ const cardTemplate = document.querySelector('.template').content;
 
 function createCard(item) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    //если константы вынести из функции, то карточки будут перезаписываться на одно и то же место и renderCard перестает работать
     const cardImage = cardElement.querySelector('.card__image');
     cardImage.src = item.link;
     cardImage.alt = item.name;
@@ -137,8 +124,6 @@ renderCard(initialCards);
 
 
 //form for adding
-
-
 const adderButton = document.querySelector('.add-button');
 const closePopupButton = document.querySelector('.cardPopup__close');
 const cardForm = document.querySelector('.cardPopup__form');

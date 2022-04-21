@@ -158,7 +158,6 @@ function deleteCard(event) {
 }
 
 const popupImage = document.querySelector('.show-image__img');
-
 const imageCaption = document.querySelector('.show-image__subscription');
 
 function setListeners(card) {

@@ -1,18 +1,19 @@
 export class Card {
-    constructor(data, cardTemplate) {
+    constructor(data, cardTemplate, handleImageClick) {
         this._link = data.link;
         this._name = data.name;
         this._cardTemplate = cardTemplate;
+        this._handleImageClick = handleImageClick;
     }
 
     _getTemplate() {
         const cardElement = document
-            .querySelector('.template')
+            .querySelector(this._cardTemplate)
             .content.querySelector('.card')
             .cloneNode(true);
         return cardElement;
     }
-        
+
     _setEventListeners() {
         this._elemLike.addEventListener('click', () => {
             this._toggleLike();
@@ -45,6 +46,6 @@ export class Card {
         this._elemImage.alt = this._name;
         this._setEventListeners();
         return this._element;
-    } 
+    }
 
 }

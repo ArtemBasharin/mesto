@@ -24,7 +24,7 @@ export class FormValidator {
         errorElement.textContent = '';
     }
 
-    _checkValidity(inputElement) {
+    _checkInputValidity(inputElement) {
         if (!inputElement.validity.valid) {
             this._showInputError(inputElement, inputElement.validationMessage);
         } else {
@@ -58,14 +58,14 @@ export class FormValidator {
 
     resetValidation() {
         this._inputList.forEach(inputElement => {
-          this._hideInputError(inputElement);
+            this._hideInputError(inputElement);
         })
         this._toggleButtonState();
-      }
+    }
 
     _setEventListeners() {
         this._toggleButtonState();
-    
+
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkValidity(inputElement);

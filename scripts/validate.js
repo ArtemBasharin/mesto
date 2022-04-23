@@ -1,12 +1,3 @@
-const conf = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input_type_error-active'
-};
-
 const showInputError = (formElement, inputElement, errorMessage, conf) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.classList.add(conf.inputErrorClass);
@@ -40,7 +31,7 @@ const setEventListeners = (formElement, conf) => {
     });
 };
 
-const enableValidation = (conf) => {
+function enableValidation(conf) {
     const formList = Array.from(document.querySelectorAll(conf.formSelector));
     formList.forEach((formElement) => {
         setEventListeners(formElement, conf);

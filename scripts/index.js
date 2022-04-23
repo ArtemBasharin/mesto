@@ -9,12 +9,18 @@ const nameContainer = document.querySelector('.popup__input_type_name');
 const nameValue = document.querySelector('.person__name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const employmentValue = document.querySelector('.person__employment');
-const popup = document.querySelector('.popup');
+// const popup = document.querySelector('.popup');
 const cardPopup = document.querySelector('.cardPopup');
 const popupCard = document.querySelector('.show-image');
 const cardsContainer = document.querySelector('.cards');
-
-
+const popupImage = document.querySelector('.show-image__img');
+const imageCaption = document.querySelector('.show-image__subscription');
+const adderButton = document.querySelector('.add-button');
+const closePopupButton = document.querySelector('.cardPopup__close');
+const cardForm = document.querySelector('.cardPopup__form');
+const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
+const inputLink = document.querySelector('.cardPopup__input_type_link');
+const cardPopupButton = document.querySelector('.cardPopup__submit-button');
 
 const initialCards = [{
         name: 'Архыз',
@@ -41,6 +47,20 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const conf = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input_type_error-active'
+};
+
+const validators = {};
+
+
+
 
 
 function showPopup(popup) {
@@ -81,7 +101,7 @@ popupCard.addEventListener('click', (evt) => {
 function fillProfileForm() {
     nameContainer.value = nameValue.textContent;
     employmentContainer.value = employmentValue.textContent;
-}
+};
 
 function saveProfile(evt) {
     evt.preventDefault();
@@ -92,6 +112,7 @@ function saveProfile(evt) {
 };
 
 profileButton.addEventListener('click', () => {
+    validators['profile-form'].resetValidation();
     fillProfileForm();
     showPopup(profilePopup);
 });
@@ -103,20 +124,21 @@ profileCloseButton.addEventListener('click', () => {
 
 profileForm.addEventListener('submit', saveProfile);
 
+
+
+
 function handleImageClick(name, link) {
     popupImage.src = link;
     popupImage.alt = name;
     imageCaption.textContent = name;
-    showPopup(popupCard)
-}
+    showPopup(popupCard);
+};
 
 function createCard(item) {
     const card = new Card(item, '.template', handleImageClick)
     const cardElement = card.renderCard();
     return cardElement;
 };
-
-
 
 function renderCard(arr) {
     arr.forEach(element => {
@@ -127,17 +149,29 @@ function renderCard(arr) {
 renderCard(initialCards);
 
 
+
+function enableValidation(conf) {
+    const formList = Array.from(document.querySelectorAll(conf.formSelector));
+    formList.forEach((formElement) => {
+        const validator = new FormValidator(formElement, conf)
+        const formName = formElement.getAttribute('name')
+        validators[formName] = validator;
+        validator.enableValidation();
+    });
+};
+
+enableValidation(conf);
+
+
+
+
 //form for adding
-const adderButton = document.querySelector('.add-button');
-const closePopupButton = document.querySelector('.cardPopup__close');
-const cardForm = document.querySelector('.cardPopup__form');
+adderButton.addEventListener('click', () => {
+    validators['adder-form'].resetValidation();
+    showPopup(cardPopup);
+});
 
-
-adderButton.addEventListener('click', () => { showPopup(cardPopup) });
 closePopupButton.addEventListener('click', () => { closePopup(cardPopup) });
-const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
-const inputLink = document.querySelector('.cardPopup__input_type_link');
-const cardPopupButton = document.querySelector('.cardPopup__submit-button');
 
 function addCard(evt) {
     evt.preventDefault();
@@ -154,13 +188,6 @@ function addCard(evt) {
 };
 
 cardForm.addEventListener('submit', addCard);
-
-
-
-const popupImage = document.querySelector('.show-image__img');
-const imageCaption = document.querySelector('.show-image__subscription');
-
-// 
 
 document.querySelector('.show-image__close').addEventListener('click', () => {
     closePopup(popupCard);

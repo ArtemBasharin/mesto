@@ -2,25 +2,22 @@ import { Card } from './Сard.js';
 import { FormValidator } from './FormValidator.js';
 
 const profileButton = document.querySelector('.person__edit-button');
-const profileCloseButton = document.querySelector('.popup__close');
 const profileForm = document.querySelector('.popup__form')
 const profilePopup = document.querySelector('.profile-popup');
 const nameContainer = document.querySelector('.popup__input_type_name');
 const nameValue = document.querySelector('.person__name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const employmentValue = document.querySelector('.person__employment');
-// const popup = document.querySelector('.popup');
 const cardPopup = document.querySelector('.cardPopup');
 const popupCard = document.querySelector('.show-image');
 const cardsContainer = document.querySelector('.cards');
 const popupImage = document.querySelector('.show-image__img');
 const imageCaption = document.querySelector('.show-image__subscription');
 const adderButton = document.querySelector('.add-button');
-const closePopupButton = document.querySelector('.cardPopup__close');
 const cardForm = document.querySelector('.cardPopup__form');
 const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
 const inputLink = document.querySelector('.cardPopup__input_type_link');
-const cardPopupButton = document.querySelector('.cardPopup__submit-button');
+
 
 const initialCards = [{
         name: 'Архыз',
@@ -59,7 +56,18 @@ const conf = {
 
 const validators = {};
 
+const popups = document.querySelectorAll('.popup');
 
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+            closePopup(popup)
+        }
+    })
+})
 
 
 
@@ -80,23 +88,7 @@ function handleEscButton(evt) {
     }
 }
 
-profilePopup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        closePopup(profilePopup);
-    }
-});
 
-cardPopup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        closePopup(cardPopup);
-    }
-});
-
-popupCard.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        closePopup(popupCard);
-    }
-});
 
 function fillProfileForm() {
     nameContainer.value = nameValue.textContent;
@@ -117,13 +109,7 @@ profileButton.addEventListener('click', () => {
     showPopup(profilePopup);
 });
 
-profileCloseButton.addEventListener('click', () => {
-    closePopup(profilePopup);
-    profileForm.reset();
-});
-
 profileForm.addEventListener('submit', saveProfile);
-
 
 
 
@@ -164,14 +150,12 @@ enableValidation(conf);
 
 
 
-
 //form for adding
 adderButton.addEventListener('click', () => {
+    cardForm.reset();
     validators['adder-form'].resetValidation();
     showPopup(cardPopup);
 });
-
-closePopupButton.addEventListener('click', () => { closePopup(cardPopup) });
 
 function addCard(evt) {
     evt.preventDefault();
@@ -182,13 +166,7 @@ function addCard(evt) {
     const card = createCard(item)
     cardsContainer.prepend(card);
     closePopup(cardPopup);
-    cardPopupButton.classList.add('popup__submit-button_disabled');
-    cardPopupButton.setAttribute('disabled', '');
     cardForm.reset();
 };
 
 cardForm.addEventListener('submit', addCard);
-
-document.querySelector('.show-image__close').addEventListener('click', () => {
-    closePopup(popupCard);
-});

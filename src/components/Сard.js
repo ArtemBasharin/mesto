@@ -38,7 +38,7 @@ export class Card {
         this._element.remove()
     }
 
-    renderCard() {
+    generateCard() {
         this._element = this._getTemplate();
         this._elemImage = this._element.querySelector('.card__image');
         this._elemLike = this._element.querySelector('.card__like-button');

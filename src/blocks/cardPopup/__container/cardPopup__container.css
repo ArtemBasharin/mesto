@@ -2,7 +2,7 @@
     width: 430px;
     height: 330px;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     justify-items: end;
     margin: auto;
     position: relative;

@@ -72,11 +72,11 @@ userPopup.setEventListeners();
 
 
 profileButton.addEventListener('click', () => {
-    const userData = personProfile.getUserInfo()
-    nameContainer.value = userData.name
-    employmentContainer.value = userData.info
-    userPopup.open()
-    validators['edit-profile'].resetValidation()
+    const userData = personProfile.getUserInfo();
+    nameContainer.value = userData.name;
+    employmentContainer.value = userData.employment;
+    userPopup.showPopup();
+    validators['edit-profile'].resetValidation();
 })
 
 

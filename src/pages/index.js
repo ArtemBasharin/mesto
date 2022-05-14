@@ -121,14 +121,14 @@ popups.forEach((popup) => {
 
 
 
-
 function createCard(data) {
     const cardElement = new Card({
-        data: data,
-        handleCardClick: (link, name) => {
-            showImagePopup.showPopup(link, name);
-        }
-    }, '.template');
+            data: data,
+            handleCardClick: (link, name) => {
+                showImagePopup.showPopup(link, name)
+            }
+        },
+        '.template');
 
     return cardElement;
 }

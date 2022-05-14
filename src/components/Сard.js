@@ -2,7 +2,7 @@ export default class Card {
     constructor({ data, handleCardClick }, cardSelector) {
         this._link = data.link;
         this._name = data.name;
-        this._cardSelector = document.querySelector(cardSelector).content.querySelector('.card');
+        this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
     }
 

@@ -76,7 +76,7 @@ profileButton.addEventListener('click', () => {
     nameContainer.value = userData.name;
     employmentContainer.value = userData.employment;
     userPopup.showPopup();
-    validators['edit-profile'].resetValidation();
+    validators['profile-form'].resetValidation();
 })
 
 
@@ -105,18 +105,18 @@ showImagePopup.setEventListeners();
 
 
 
-const popups = document.querySelectorAll('.popup');
+// const popups = document.querySelectorAll('.popup');
 
-popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__close')) {
-            closePopup(popup)
-        }
-    })
-});
+// popups.forEach((popup) => {
+//     popup.addEventListener('mousedown', (evt) => {
+//         if (evt.target.classList.contains('popup_opened')) {
+//             closePopup(popup)
+//         }
+//         if (evt.target.classList.contains('popup__close')) {
+//             closePopup(popup)
+//         }
+//     })
+// });
 
 
 
@@ -124,8 +124,8 @@ popups.forEach((popup) => {
 function createCard(data) {
     const cardElement = new Card({
             data: data,
-            handleCardClick: (link, name) => {
-                showImagePopup.showPopup(link, name)
+            handleCardClick: (name, link) => {
+                showImagePopup.showPopup(name, link)
             }
         },
         '.template');
@@ -150,24 +150,37 @@ cardList.renderItems();
 
 
 
+//////////////////////
 
-//form for adding
-adderButton.addEventListener('click', () => {
-    cardForm.reset();
-    validators['adder-form'].resetValidation();
-    showPopup(cardPopup);
+
+const adderPopup = new PopupWithForm('.cardPopup', (data) => {
+    const card = createCard(data);
+    const cardElement = card.generateCard();
+    cardsContainer.prepend(cardElement);
+    adderPopup.closePopup();
 });
 
-function addCard(evt) {
-    evt.preventDefault();
-    const item = {
-        name: inputCardname.value,
-        link: inputLink.value
-    }
-    const card = createCard(item)
-    cardsContainer.prepend(card);
-    closePopup(cardPopup);
-    cardForm.reset();
-};
 
-cardForm.addEventListener('submit', addCard);
+adderButton.addEventListener('click', () => {
+    adderPopup.showPopup();
+    validators['adder-form'].resetValidation();
+});
+//////////////////////////
+
+
+
+
+
+// function addCard(evt) {
+//     evt.preventDefault();
+//     const item = {
+//         name: inputCardname.value,
+//         link: inputLink.value
+//     }
+//     const card = createCard(item)
+//     cardsContainer.prepend(card);
+//     closePopup(cardPopup);
+//     cardForm.reset();
+// };
+
+// cardForm.addEventListener('submit', addCard);

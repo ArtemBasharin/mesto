@@ -7,17 +7,11 @@ export default class Card {
     }
 
     _getTemplate() {
-        const cardElement = document
-            .querySelector(this._cardSelector)
-            .content.querySelector('.card')
-            .cloneNode(true);
+        const cardElement = document.querySelector(this._cardSelector)
+            .content.querySelector('.card').cloneNode(true);
         return cardElement;
     }
 
-    _showImage() {
-        this._handleCardClick(this._name, this._link);
-
-    }
 
     _setEventListeners() {
         this._elemLike.addEventListener('click', () => {
@@ -43,10 +37,7 @@ export default class Card {
         this._elemImage = this._element.querySelector('.card__image');
         this._elemLike = this._element.querySelector('.card__like-button');
         this._elemTrash = this._element.querySelector('.card__trash-button');
-        this._element
-            .querySelector('.card__subsection')
-            .querySelector('.card__description')
-            .textContent = this._name;
+        this._element.querySelector('.card__subsection').querySelector('.card__description').textContent = this._name;
         this._elemImage.src = this._link;
         this._elemImage.alt = this._name;
         this._setEventListeners();

@@ -5,6 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
+import { link } from 'graceful-fs';
 
 const profileButton = document.querySelector('.person__edit-button');
 const profileForm = document.querySelector('.popup__form')
@@ -59,7 +60,10 @@ const conf = {
     errorClass: 'popup__input_type_error-active'
 };
 
-const personProfile = new UserInfo(nameValue, employmentValue);
+const personProfile = new UserInfo({
+    name: nameValue,
+    employment: employmentValue
+});
 
 const userPopup = new PopupWithForm('.profile-popup', (data) => {
     personProfile.setUserInfo(data);
@@ -75,8 +79,9 @@ profileButton.addEventListener('click', () => {
     const userData = personProfile.getUserInfo();
     nameContainer.value = userData.name;
     employmentContainer.value = userData.employment;
-    userPopup.showPopup();
     validators['profile-form'].resetValidation();
+    userPopup.showPopup();
+
 })
 
 
@@ -125,25 +130,23 @@ function createCard(data) {
     const cardElement = new Card({
             data: data,
             handleCardClick: (name, link) => {
-                showImagePopup.showPopup(name, link)
+                showImagePopup.showPopup(link, name);
             }
         },
         '.template');
-
-    return cardElement;
+    const card = cardElement.generateCard();
+    return card;
 }
 
 
-
-
 const cardList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-        const card = createCard(item);
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
+        items: initialCards,
+        renderer: (item) => {
+            const card = createCard(item);
+            cardList.addItem(cardElement);
+        },
     },
-}, '.cards');
+    '.cards');
 
 cardList.renderItems();
 

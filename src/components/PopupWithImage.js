@@ -7,7 +7,7 @@ export default class PopupWithImage extends Popup {
         this._imageCaption = this._popup.querySelector('.show-image__subscription');
     }
 
-    showPopup(title, link) {
+    showPopup(link, title) {
         this._popupImage.src = link;
         this._popupImage.alt = title;
         this._imageCaption.textContent = title;

@@ -21,9 +21,10 @@ export default class Card {
             this._deleteCard();
         });
         this._elemImage.addEventListener("click", () => {
-            this._showImage();
+            this._handleCardClick(this._name, this._link);
         });
     }
+
     _toggleLike() {
         this._elemLike.classList.toggle('card__like-button_black');
     }
@@ -37,11 +38,10 @@ export default class Card {
         this._elemImage = this._element.querySelector('.card__image');
         this._elemLike = this._element.querySelector('.card__like-button');
         this._elemTrash = this._element.querySelector('.card__trash-button');
-        this._element.querySelector('.card__subsection').querySelector('.card__description').textContent = this._name;
+        this._element.querySelector('.card__description').textContent = this._name;
         this._elemImage.src = this._link;
         this._elemImage.alt = this._name;
         this._setEventListeners();
         return this._element;
     }
-
 }

@@ -110,7 +110,7 @@ showImagePopup.setEventListeners();
 
 
 
-function createCard(data) {
+const createCard = (data) => {
     const cardElement = new Card({
             data: data,
             handleCardClick: (name, link) => {
@@ -118,8 +118,7 @@ function createCard(data) {
             }
         },
         '.template');
-    const card = cardElement.generateCard();
-    return card;
+    return cardElement.generateCard();
 }
 
 
@@ -127,8 +126,7 @@ function createCard(data) {
 const cardList = new Section({
         items: initialCards,
         renderer: (item) => {
-            const card = createCard(item);
-            cardList.addItem(cardElement);
+            cardList.addItem(createCard(item));
         },
     },
     '.cards');
@@ -138,20 +136,15 @@ cardList.renderItems();
 
 
 
-//////////////////////
-
-
 const adderPopup = new PopupWithForm('.cardPopup', (data) => {
-    const card = createCard(data);
-    const cardElement = card.generateCard();
-    cardsContainer.prepend(cardElement);
+    cardList.addItem(createCard(data));
     adderPopup.closePopup();
 });
 
 
 adderButton.addEventListener('click', () => {
-    adderPopup.showPopup();
     validators['adder-form'].resetValidation();
+    adderPopup.showPopup();
 });
 //////////////////////////
 

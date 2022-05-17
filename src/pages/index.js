@@ -5,7 +5,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
-import { link } from 'graceful-fs';
 
 const profileButton = document.querySelector('.person__edit-button');
 const profileForm = document.querySelector('.popup__form')
@@ -110,21 +109,6 @@ showImagePopup.setEventListeners();
 
 
 
-// const popups = document.querySelectorAll('.popup');
-
-// popups.forEach((popup) => {
-//     popup.addEventListener('mousedown', (evt) => {
-//         if (evt.target.classList.contains('popup_opened')) {
-//             closePopup(popup)
-//         }
-//         if (evt.target.classList.contains('popup__close')) {
-//             closePopup(popup)
-//         }
-//     })
-// });
-
-
-
 
 function createCard(data) {
     const cardElement = new Card({
@@ -137,6 +121,7 @@ function createCard(data) {
     const card = cardElement.generateCard();
     return card;
 }
+
 
 
 const cardList = new Section({

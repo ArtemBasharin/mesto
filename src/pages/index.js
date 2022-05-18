@@ -23,8 +23,24 @@ const cardForm = document.querySelector('.cardPopup__form');
 const inputCardname = document.querySelector('.cardPopup__input_type_cardname');
 const inputLink = document.querySelector('.cardPopup__input_type_link');
 
+//unsplash API section
+// const clientID = 'wKvBf9c4PeaJ6-R6hcNgfpyy6JYkQtMtf22X1bsxYGA';
+// const endpoint = `https://api.unsplash.com/photos/?client_id=${clientID}`
 
-const initialCards = [{
+// function renderRandomSource() {
+//     fetch(endpoint)
+//         .then(function(response) {
+//             return response.json();
+//         })
+//         .then(function(jsonData) {
+//             return { name: jsonData.user.name, link: jsonData.urls.regular };
+//         });
+
+// }
+
+const initialCards = [
+    // renderRandomSource(),
+    {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },

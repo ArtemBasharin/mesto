@@ -10,9 +10,9 @@ const profileButton = document.querySelector('.person__edit-button');
 const profileForm = document.querySelector('.popup__form')
 const profilePopup = document.querySelector('.profile-popup');
 const nameContainer = document.querySelector('.popup__input_type_name');
-const nameValue = document.querySelector('.person__name'); //
+const nameValueSelector = '.person__name'; //
 const employmentContainer = document.querySelector('.popup__input_type_employment');
-const employmentValue = document.querySelector('.person__employment'); //
+const employmentValueSelector = '.person__employment'; //
 const cardPopup = document.querySelector('.cardPopup');
 
 const cardsContainer = document.querySelector('.cards');
@@ -76,8 +76,8 @@ const conf = {
 };
 
 const personProfile = new UserInfo({
-    name: nameValue,
-    employment: employmentValue
+    name: nameValueSelector,
+    employment: employmentValueSelector
 });
 
 const userPopup = new PopupWithForm('.profile-popup', (data) => {
@@ -157,6 +157,7 @@ const adderPopup = new PopupWithForm('.cardPopup', (data) => {
     adderPopup.closePopup();
 });
 
+adderPopup.setEventListeners();
 
 adderButton.addEventListener('click', () => {
     validators['adder-form'].resetValidation();

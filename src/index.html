@@ -54,7 +54,7 @@
 
         <div class="popup cardPopup">
             <div class="cardPopup__container">
-                <button class="cardPopup__close popup__close "></button>
+                <button class="cardPopup__close popup__close"></button>
                 <form class="cardPopup__form popup__form" name="adder-form" novalidate>
                     <h3 class="cardPopup__title">Новое&nbsp;место</h3>
                     <input class="cardPopup__input cardPopup__input_type_name cardPopup__input_type_cardname popup__input" id='place' type="text" name="name" placeholder="Введите название" required minlength="2" maxlength="30">
@@ -87,7 +87,31 @@
                 </div>
             </div>
         </div>
-        <!-- https://source.unsplash.com/random/?science,tech -->
+
+
+
+        <div class="popup popupConfirm">
+            <div class="popupConfirm_container">
+                <h3 class="popupConfirm__title">Вы уверены?</h3>
+                <button type="button" class="popupConfirm_confirm popup__submit-button">Да</button>
+                <button type="button" class="popupConfirm__close popup__close"></button>
+            </div>
+        </div>
+
+
+
+        <div class="popup popupAvatar">
+            <div class="popupAvatar_container">
+                <h3 class="popupAvatar_title">Обновить аватар</h3>
+                <form name="popupAvatar-form" class="popup__form popupAvatar_form">
+                    <input id="avatarLink" autocomplete="off" type="url" name="avatarLink" class="popup__input popupAvatar__input_type_avatar-link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="avatarLink-error"> </span>
+                    <button type="submit" class="button button_type_submit button_type_avatar">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close button_type_close-avatar"></button>
+            </div>
+        </div>
+
     </div>
 </body>
 

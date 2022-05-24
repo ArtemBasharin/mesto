@@ -9,32 +9,20 @@ import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Api from '../components/Api.js';
 
 const profileButton = document.querySelector('.person__edit-button');
-const profilePopupSelector = document.querySelector('.profile-popup');
+const profilePopupSelector = '.profile-popup';
 const nameContainer = document.querySelector('.popup__input_type_name');
 const employmentContainer = document.querySelector('.popup__input_type_employment');
 const adderButton = document.querySelector('.add-button');
-const adderPopupSelector = document.querySelector('.cardPopup');
-const popupAvatarSelector = document.querySelector('.popupAvatar');
-const imagePopupSelector = document.querySelector('.show-image');
-const popupConfirmSelector = document.querySelector('.popupConfirm');
+const adderPopupSelector = '.cardPopup';
+const popupAvatarSelector = '.popupAvatar';
+const imagePopupSelector = '.show-image';
+const popupConfirmSelector = '.popupConfirm';
+const updateAvatarButton = document.querySelector('.button_type_avatar');
+const name = '.person__name';
+const employment = '.person__employment';
+const avatar = '.person__image';
 
 
-
-
-//unsplash API section
-// const clientID = 'wKvBf9c4PeaJ6-R6hcNgfpyy6JYkQtMtf22X1bsxYGA';
-// const endpoint = `https://api.unsplash.com/photos/?client_id=${clientID}`
-
-// function renderRandomSource() {
-//     fetch(endpoint)
-//         .then(function(response) {
-//             return response.json();
-//         })
-//         .then(function(jsonData) {
-//             return { name: jsonData.user.name, link: jsonData.urls.regular };
-//         });
-
-// }
 
 
 const conf = {
@@ -56,15 +44,9 @@ const api = new Api({
 });
 
 
-// const personProfile = new UserInfo({
-//     name: nameValueSelector,
-//     employment: employmentValueSelector
-// });
 
 
-
-/////////////////  done
-const userInfo = new UserInfo(name, about, avatar);
+const userInfo = new UserInfo(name, employment, avatar);
 let userId;
 api.getUserInfo()
     .then((data) => {
@@ -77,7 +59,7 @@ api.getUserInfo()
 
 
 
-//////////////////////////////////////////////// проверить links
+
 function createCard(data) {
     const card = new Card({
         data: data,
@@ -103,7 +85,7 @@ function createCard(data) {
 
 
 
-/////////////// done
+
 let cardList;
 
 api.getInitialCards()
@@ -124,15 +106,15 @@ api.getInitialCards()
 
 
 
-////////////////////// done
-const adderPopup = new PopupWithForm({
-    popupSelector: adderPopupSelector,
-    handleFormSubmit: (info) => {
+
+const adderPopup = new PopupWithForm(
+    '.cardPopup',
+    (info) => {
         renderLoading(adderPopupSelector, true);
         api.postNewCard(info.title, info.link)
             .then((data) => {
                 const cardElement = createCard(data);
-                cardsList.addItem(cardElement);
+                cardList.addItem(cardElement);
             })
             .catch((err) => {
                 console.log(err);
@@ -141,10 +123,10 @@ const adderPopup = new PopupWithForm({
                 renderLoading(adderPopupSelector, false))
 
     }
-});
+);
 
 
-///////////////// check me!!! may be done
+
 adderPopup.setEventListeners();
 adderButton.addEventListener('click', () => {
     validators['adder-form'].resetValidation();
@@ -153,12 +135,12 @@ adderButton.addEventListener('click', () => {
 
 
 
-///////////// done
-const userPopup = new PopupWithForm({
-    popupSelector: profilePopupSelector,
-    handleFormSubmit: (info) => {
+
+const userPopup = new PopupWithForm(
+    profilePopupSelector,
+    (info) => {
         renderLoading(profilePopupSelector, true);
-        api.setUserInfo(info.name, info.job)
+        api.setUserInfo(info.name, info.employment)
             .then((data) => {
                 userInfo.setUserInfo(data);
             })
@@ -168,30 +150,26 @@ const userPopup = new PopupWithForm({
             .finally(() =>
                 renderLoading(profilePopupSelector, false))
     }
-})
+);
 
 
-//////////////////// check!! may be done
 userPopup.setEventListeners();
 
 profileButton.addEventListener('click', () => {
-    const userData = personProfile.getUserInfo();
+    const userData = userInfo.getUserInfo();
     nameContainer.value = userData.name;
     employmentContainer.value = userData.employment;
     validators['profile-form'].resetValidation();
     userPopup.showPopup();
 });
-/////////////////////
 
 
 
 
 
-
-////////////////// check
-const popupWithFormAvatar = new PopupWithForm({
-    popupSelector: popupAvatarSelector,
-    handleFormSubmit: (info) => {
+const popupWithFormAvatar = new PopupWithForm(
+    popupAvatarSelector,
+    (info) => {
         renderLoading(popupAvatarSelector, true);
         api.setAvatar(info.avatarLink)
             .then((data) => {
@@ -203,7 +181,7 @@ const popupWithFormAvatar = new PopupWithForm({
             .finally(() =>
                 renderLoading(popupAvatarSelector, false))
     }
-});
+);
 
 
 
@@ -213,14 +191,15 @@ updateAvatarButton.addEventListener('click', function() {
 
 
 
-/////////////done
+
 const popupImage = new PopupWithImage(imagePopupSelector);
 
 
-/////////////// done
-const popupConfirm = new PopupWithConfirm({
-    popupSelector: popupConfirmSelector,
-    handleDeleteButtonClick: () => {
+
+
+const popupConfirm = new PopupWithConfirm(
+    popupConfirmSelector,
+    () => {
         const cardId = popupConfirm.cardObject._cardId;
         api.deleteCard(cardId)
             .then(() => {
@@ -232,11 +211,11 @@ const popupConfirm = new PopupWithConfirm({
                 console.log(err);
             })
     }
-});
+);
 
 
 
-/////////////done
+
 function renderLoading(popup, isLoading) {
     const submitButton = popup.querySelector('.popup__submit-button');
     if (isLoading) {
@@ -244,11 +223,11 @@ function renderLoading(popup, isLoading) {
     } else {
         submitButton.textContent = 'Сохранить'
     }
-}
+};
 
 
 
-///////////// check me! may be it`s done
+
 const validators = {};
 
 function enableValidation(conf) {
@@ -262,17 +241,3 @@ function enableValidation(conf) {
 };
 
 enableValidation(conf);
-
-
-
-
-// const createCard = (data) => {
-//     const cardElement = new Card({
-//             data: data,
-//             handleCardClick: (name, link) => {
-//                 showImagePopup.showPopup(link, name);
-//             }
-//         },
-//         '.template');
-//     return cardElement.generateCard();
-// }

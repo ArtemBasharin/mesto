@@ -8,21 +8,21 @@ export default class FormValidator {
         this._formElement = formElement;
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    }
+    };
 
     _showInputError(inputElement, errorMessage) {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._errorClass);
         errorElement.classList.add(this._inputErrorClass);
-    }
+    };
 
     _hideInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         errorElement.classList.remove(this._inputErrorClass);
         errorElement.classList.remove(this._errorClass);
         errorElement.textContent = '';
-    }
+    };
 
     _checkInputValidity(inputElement) {
         if (!inputElement.validity.valid) {
@@ -30,23 +30,23 @@ export default class FormValidator {
         } else {
             this._hideInputError(inputElement);
         }
-    }
+    };
 
     _hasInvalidInput(inputList) {
         return inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
-    }
+    };
 
     _disableSubmitButton() {
         this._buttonElement.classList.add(this._inactiveButtonClass);
         this._buttonElement.setAttribute('disabled', true);
-    }
+    };
 
     _enableSubmitButton() {
         this._buttonElement.classList.remove(this._inactiveButtonClass);
         this._buttonElement.removeAttribute('disabled');
-    }
+    };
 
     _toggleButtonState() {
         if (this._hasInvalidInput(this._inputList)) {
@@ -54,14 +54,14 @@ export default class FormValidator {
         } else {
             this._enableSubmitButton();
         }
-    }
+    };
 
     resetValidation() {
         this._inputList.forEach(inputElement => {
             this._hideInputError(inputElement);
         })
         this._toggleButtonState();
-    }
+    };
 
     _setEventListeners() {
         this._toggleButtonState();
@@ -71,9 +71,9 @@ export default class FormValidator {
                 this._toggleButtonState();
             });
         });
-    }
+    };
 
     enableValidation() {
         this._setEventListeners();
     }
-}
+};

@@ -22,15 +22,12 @@ export default class PopupWithForm extends Popup {
         this.closePopup();
     }
 
-    setEventListeners() { /////////// разобраться, может метод сделать приватным
+    setEventListeners() {
         super.setEventListeners();
         this._form.addEventListener('submit', this._submitForm);
     }
 
-    // _removeEventListeners() {
-    //     super._removeEventListeners();
-    //     this._form.removeEventListener('submit', this._submitForm);
-    // }
+
 
     closePopup() {
         super.closePopup();

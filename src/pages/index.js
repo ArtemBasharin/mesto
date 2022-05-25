@@ -57,6 +57,7 @@ api.getUserInfo()
         console.log(err);
     })
 
+const popupImage = new PopupWithImage(imagePopupSelector);
 
 function createCard(data) {
     const card = new Card({
@@ -134,7 +135,7 @@ adderButton.addEventListener('click', () => {
 const userPopup = new PopupWithForm(
     profilePopupSelector, (info) => {
         renderLoading(profilePopupSelector, true);
-        api.setUserInfo(info.name, info.about)
+        api.setUserInfo(info.name, info.employment)
             .then((data) => {
                 userInfo.setUserInfo(data);
             })
@@ -151,8 +152,8 @@ userPopup.setEventListeners();
 
 profileButton.addEventListener('click', () => {
     const userData = userInfo.getUserInfo();
-    nameContainer.value = userData.name; ////////////check it
-    employmentContainer.value = userData.employment; /////////////check it
+    nameContainer.value = userData.name;
+    employmentContainer.value = userData.employment;
     validators['profile-form'].resetValidation();
     userPopup.showPopup();
 });
@@ -181,8 +182,6 @@ updateAvatarButton.addEventListener('click', function() {
     popupWithFormAvatar.showPopup();
 });
 
-
-const popupImage = new PopupWithImage(imagePopupSelector);
 
 
 const popupConfirm = new PopupWithConfirm(

@@ -59,29 +59,32 @@ api.getUserInfo()
 
 
 
-
 function createCard(data) {
     const card = new Card({
         data: data,
         userId: userId,
         clickHandlers: {
-            handleCardClick: (title, link) => {
-                popupImage.open(title, link)
+            handleCardClick: (link, title) => {
+                popupImage.showPopup(link, title)
             },
             handleLikeClick: (cardId, isLiked) => {
                 return api.likeCard(cardId, isLiked)
             },
             handleDeleteIconClick: (cardObject) => {
                 popupConfirm.cardObject = cardObject;
-                popupConfirm.open()
+                popupConfirm.showPopup()
             }
         }
-    }, '.template');
+    }, '.template')
     const cardElement = card.createCard();
     card.markUserLikes(cardElement);
     card.updateLikes(cardElement);
     return cardElement;
 }
+
+
+
+
 
 
 
@@ -193,7 +196,6 @@ updateAvatarButton.addEventListener('click', function() {
 
 
 const popupImage = new PopupWithImage(imagePopupSelector);
-
 
 
 

@@ -4,7 +4,7 @@ export default class PopupWithConfirm extends Popup {
     constructor(popupSelector, handleTrashButtonClick) {
         super(popupSelector);
         this._handleTrashButtonClick = handleTrashButtonClick;
-        this._deleteCardButton = this._popup.querySelector('.popupConfirm');
+        this._deleteCardButton = this._popup.querySelector('.popup__submit-button');
     }
 
     _setEventListeners() {

@@ -64,28 +64,23 @@ function createCard(data) {
         data: data,
         userId: userId,
         clickHandlers: {
-            handleCardClick: (link, title) => {
-                popupImage.showPopup(link, title)
+            handleCardClick: (title, link) => {
+                popupImage.showPopup(title, link)
             },
             handleLikeClick: (cardId, isLiked) => {
                 return api.likeCard(cardId, isLiked)
             },
-            handleDeleteIconClick: (cardObject) => {
+            handleDeleteClick: (cardObject) => {
                 popupConfirm.cardObject = cardObject;
                 popupConfirm.showPopup()
             }
         }
     }, '.template')
-    const cardElement = card.createCard();
+    const cardElement = card.generateCard();
     card.markUserLikes(cardElement);
     card.updateLikes(cardElement);
     return cardElement;
 }
-
-
-
-
-
 
 
 
@@ -106,7 +101,6 @@ api.getInitialCards()
     .catch((err) => {
         console.log(err)
     });
-
 
 
 
@@ -138,12 +132,10 @@ adderButton.addEventListener('click', () => {
 
 
 
-
 const userPopup = new PopupWithForm(
-    profilePopupSelector,
-    (info) => {
+    profilePopupSelector, (info) => {
         renderLoading(profilePopupSelector, true);
-        api.setUserInfo(info.name, info.employment)
+        api.setUserInfo(info.name, info.about)
             .then((data) => {
                 userInfo.setUserInfo(data);
             })
@@ -160,13 +152,11 @@ userPopup.setEventListeners();
 
 profileButton.addEventListener('click', () => {
     const userData = userInfo.getUserInfo();
-    nameContainer.value = userData.name;
-    employmentContainer.value = userData.employment;
+    nameContainer.value = userData.name; ////////////check it
+    employmentContainer.value = userData.employment; /////////////check it
     validators['profile-form'].resetValidation();
     userPopup.showPopup();
 });
-
-
 
 
 
@@ -193,10 +183,7 @@ updateAvatarButton.addEventListener('click', function() {
 });
 
 
-
-
 const popupImage = new PopupWithImage(imagePopupSelector);
-
 
 
 const popupConfirm = new PopupWithConfirm(
@@ -217,7 +204,6 @@ const popupConfirm = new PopupWithConfirm(
 
 
 
-
 function renderLoading(popupSelector, isLoading) {
     const submitButton = document.querySelector(popupSelector).querySelector('.popup__submit-button');
     if (isLoading) {
@@ -226,7 +212,6 @@ function renderLoading(popupSelector, isLoading) {
         submitButton.textContent = 'Сохранить'
     }
 };
-
 
 
 

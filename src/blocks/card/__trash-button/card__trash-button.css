@@ -18,3 +18,7 @@
     transition: opacity 0.5s;
     cursor: pointer;
 }
+
+.card__trash-button_hidden {
+    visibility: hidden;
+}

@@ -4,10 +4,18 @@
     border: 1px solid #000;
     border-radius: 50%;
     margin-right: 36px;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    position: relative;
+    object-fit: cover;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
     .person__image {
         margin: auto;
     }
+}
+
+.person__image:hover {
+    opacity: 0.2;
 }

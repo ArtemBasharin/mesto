@@ -58,7 +58,6 @@ api.getUserInfo()
     })
 
 
-
 function createCard(data) {
     const card = new Card({
         data: data,

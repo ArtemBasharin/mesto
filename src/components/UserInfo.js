@@ -11,7 +11,7 @@ export default class UserInfo {
         currentUserInfo.name = this._name.textContent;
         currentUserInfo.employment = this._employment.textContent;
         currentUserInfo.avatar = this._avatar.src;
-        console.log(this._employment.textContent);
+
         return currentUserInfo;
     };
 
@@ -20,6 +20,6 @@ export default class UserInfo {
         this._name.textContent = data.name;
         this._employment.textContent = data.about;
         this._avatar.src = data.avatar;
-
+        console.log(this._employment.textContent);
     };
 }

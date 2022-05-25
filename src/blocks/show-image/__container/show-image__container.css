@@ -1,0 +1,10 @@
+.show-image__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: end;
+    margin: auto;
+    position: relative;
+    max-width: 75vw;
+    max-height: 75vh;
+}

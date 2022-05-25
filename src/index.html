@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+</head>
+
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__image" src="<%=require('./images/logo.svg')%>" alt="Лого сайта Место">
+        </header>
+
+        <section class="person">
+            <div class="person__section">
+                <img class="person__image" src=" " alt="Фото профиля">
+                <div class="person__description">
+                    <div class="person__subsection">
+                        <h1 class="person__name"></h1>
+                        <button class="person__edit-button"></button>
+                    </div>
+                    <p class="person__employment">fsdfds</p>
+                </div>
+            </div>
+            <button class="add-button">
+                <img class="add-button__icon" src="<%=require('./images/plus-icon.svg')%>" alt="Добавить">
+            </button>
+        </section>
+
+        <section class="cards">
+        </section>
+
+        <footer class="footer">
+            <p class="footer__copyright">
+                &#169;2022 Yandex.Praktikum, Artem Basharin</p>
+        </footer>
+
+        <div class="popup profile-popup">
+            <div class="popup__grid">
+                <button class="popup__close"></button>
+                <form class="popup__form" name="profile-form" novalidate>
+                    <h3 class="popup__title">Редактировать&nbsp;профиль</h3>
+                    <input class="popup__input popup__input_type_name" id='name' type="text" name="name" placeholder="Введите имя" required minlength="2" maxlength="40">
+                    <span class="popup__input-error name-error" id="name-error"></span>
+                    <input class="popup__input popup__input_type_employment" id='employment' type="text" name="employment" placeholder="Введите род деятельности" required minlength="2" maxlength="200">
+                    <span class="popup__input-error employment-error" id="employment-error"></span>
+                    <button class="popup__submit-button" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup cardPopup">
+            <div class="cardPopup__container">
+                <button class="cardPopup__close popup__close"></button>
+                <form class="cardPopup__form popup__form" name="adder-form" novalidate>
+                    <h3 class="cardPopup__title">Новое&nbsp;место</h3>
+                    <input class="cardPopup__input cardPopup__input_type_name cardPopup__input_type_cardname popup__input" id='place' type="text" name="name" placeholder="Введите название" required minlength="2" maxlength="30">
+                    <span class="cardPopup__input-error place-error" id='place'></span>
+                    <input class="cardPopup__input cardPopup__input_type_link popup__input" id='link' type="url" name="link" placeholder="Введите url картинки" required>
+                    <span class="cardPopup__input-error link-error" id='link-error'></span>
+                    <button class="cardPopup__submit-button cardPopup__submit-button_addcard popup__submit-button popup__submit-button_disabled" type="submit" disabled>Создать</button>
+                </form>
+            </div>
+        </div>
+
+        <template class="template">
+        <article class="card">
+            <img class="card__image" src="#" alt="#">
+            <button class="card__trash-button" type="button"></button>      
+            <div class="card__subsection">
+                <h2 class="card__description"></h2>
+                <button class="card__like-button" type="button"></button>   
+            </div>
+        </article>
+        </template>
+
+
+        <div class="popup show-image">
+            <div class="show-image__container">
+                <button class="popup__close show-image__close"></button>
+                <div class="show-image__image-container">
+                    <img class="show-image__img" src="#" alt="#">
+                    <p class="show-image__subscription"></p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="popup popupConfirm">
+            <div class="popupConfirm_container">
+                <h3 class="popupConfirm__title">Вы уверены?</h3>
+                <button type="button" class="popupConfirm_confirm popup__submit-button">Да</button>
+                <button type="button" class="popupConfirm__close popup__close"></button>
+            </div>
+        </div>
+
+
+
+        <div class="popup popupAvatar">
+            <div class="popupAvatar_container">
+                <h3 class="popupAvatar_title">Обновить аватар</h3>
+                <form name="popupAvatar-form" class="popup__form popupAvatar_form">
+                    <input id="avatarLink" autocomplete="off" type="url" name="avatarLink" class="popup__input popupAvatar__input_type_avatar-link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="avatarLink-error"> </span>
+                    <button type="submit" class="button button_type_avatar popup__submit-button">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close button_type_close-avatar "></button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

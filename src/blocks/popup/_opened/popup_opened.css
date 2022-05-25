@@ -1,0 +1,14 @@
+.popup_opened {
+    display: flex;
+    animation: fade-in .2s;
+    opacity: 1;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

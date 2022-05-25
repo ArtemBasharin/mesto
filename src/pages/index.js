@@ -216,8 +216,8 @@ const popupConfirm = new PopupWithConfirm(
 
 
 
-function renderLoading(popup, isLoading) {
-    const submitButton = popup.querySelector('.popup__submit-button');
+function renderLoading(popupSelector, isLoading) {
+    const submitButton = document.querySelector(popupSelector).querySelector('.popup__submit-button');
     if (isLoading) {
         submitButton.textContent = 'Сохранение...'
     } else {

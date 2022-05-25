@@ -3,21 +3,23 @@ export default class UserInfo {
         this._name = document.querySelector(name);
         this._employment = document.querySelector(employment);
         this._avatar = document.querySelector(avatar);
-    }
+    };
+
 
     getUserInfo() {
-        this._data = {
-            name: this._name.textContent,
-            employment: this._employment.textContent,
-            avatar: this._avatar.src
-        }
+        const currentUserInfo = {};
+        currentUserInfo.name = this._name.textContent;
+        currentUserInfo.employment = this._employment.textContent;
+        currentUserInfo.avatar = this._avatar.src;
+        console.log(this._employment.textContent);
+        return currentUserInfo;
+    };
 
-        return this._data;
-    }
 
     setUserInfo(data) {
         this._name.textContent = data.name;
         this._employment.textContent = data.employment;
         this._avatar.src = data.avatar;
-    }
+
+    };
 }

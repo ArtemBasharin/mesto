@@ -17,7 +17,9 @@ const adderPopupSelector = '.cardPopup';
 const popupAvatarSelector = '.popupAvatar';
 const imagePopupSelector = '.show-image';
 const popupConfirmSelector = '.popupConfirm';
+const editAvatarButton = document.querySelector('.person__image');
 const updateAvatarButton = document.querySelector('.button_type_avatar');
+
 const name = '.person__name';
 const employment = '.person__employment';
 const avatar = '.person__image';
@@ -58,6 +60,7 @@ api.getUserInfo()
     })
 
 const popupImage = new PopupWithImage(imagePopupSelector);
+popupImage.setEventListeners()
 
 function createCard(data) {
     const card = new Card({
@@ -70,8 +73,9 @@ function createCard(data) {
             handleLikeClick: (cardId, isLiked) => {
                 return api.likeCard(cardId, isLiked)
             },
-            handleDeleteClick: (cardObject) => {
-                popupConfirm.cardObject = cardObject;
+            handleDeleteClick: (cardInstance) => {
+                console.log(cardInstance)
+                popupConfirm.cardInstance = cardInstance;
                 popupConfirm.showPopup()
             }
         }
@@ -108,7 +112,7 @@ const adderPopup = new PopupWithForm(
     '.cardPopup',
     (info) => {
         renderLoading(adderPopupSelector, true);
-        api.postNewCard(info.title, info.link)
+        api.postNewCard(info.name, info.link)
             .then((data) => {
                 const cardElement = createCard(data);
                 cardList.addItem(cardElement);
@@ -166,6 +170,7 @@ const popupWithFormAvatar = new PopupWithForm(
         renderLoading(popupAvatarSelector, true);
         api.setAvatar(info.avatarLink)
             .then((data) => {
+                console.log(data);
                 userInfo.setUserInfo(data);
             })
             .catch((err) => {
@@ -176,23 +181,23 @@ const popupWithFormAvatar = new PopupWithForm(
     }
 );
 
-
-
-updateAvatarButton.addEventListener('click', function() {
+editAvatarButton.addEventListener('click', function() {
     popupWithFormAvatar.showPopup();
 });
+
+
 
 
 
 const popupConfirm = new PopupWithConfirm(
     popupConfirmSelector,
     () => {
-        const cardId = popupConfirm.cardObject._cardId;
+        const cardId = popupConfirm.cardInstance._cardId;
         api.deleteCard(cardId)
             .then(() => {
-                popupConfirm.cardObject.deleteCard();
+                popupConfirm.cardInstance.deleteCard();
                 popupConfirm.closePopup();
-                popupConfirm.cardObject = '';
+                popupConfirm.cardInstance = '';
             })
             .catch(err => {
                 console.log(err);

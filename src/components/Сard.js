@@ -28,7 +28,7 @@ export default class Card {
             this._toggleLike();
         });
         this._elemTrash.addEventListener('click', () => {
-            this._handleDeleteClick();
+            this._handleDeleteClick(this);
         });
         this._elemImage.addEventListener("click", () => {
             this._handleCardClick(this._title, this._link);
@@ -75,9 +75,9 @@ export default class Card {
     /////////////////
     _allowDeletion() {
         if (this._userId !== this._ownerId) {
-            this._elemTrash.classList.add('.card__trash-button_hidden')
+            this._elemTrash.classList.add('card__trash-button_hidden')
         } else {
-            this._elemTrash.classList.remove('.card__trash-button_hidden')
+            this._elemTrash.classList.remove('card__trash-button_hidden')
         }
     }
 
@@ -89,9 +89,9 @@ export default class Card {
         this._elemLike = this._element.querySelector('.card__like-button');
         this._elemTrash = this._element.querySelector('.card__trash-button');
         this._likesCounter = this._element.querySelector('.card__likesCounter');
-        this._element.querySelector('.card__description').textContent = this._name;
+        this._element.querySelector('.card__description').textContent = this._title;
         this._elemImage.src = this._link;
-        this._elemImage.alt = this._name;
+        this._elemImage.alt = this._title;
         this._allowDeletion();
         this._setEventListeners();
         return this._element;

@@ -40,6 +40,9 @@
     @import url('../blocks/popup/__input/_type/popup__input_type_error-active.css');
     @import url('../blocks/popup/__input-error/popup__input-error.css');
     @import url('../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css');
+    @import url('../blocks/popupConfirm/_container/popupConfirm_container.css');
+    @import url('../blocks/popupConfirm/__title/popupConfirm__title.css');
+    @import url('../blocks/popupConfirm/_confirm/popupConfirm_confirm.css');
     @import url('../blocks/cardPopup/cardPopup.css');
     @import url('../blocks/cardPopup/_opened/cardPopup_opened.css');
     @import url('../blocks/cardPopup/__close/cardPopup__close.css');
@@ -58,3 +61,4 @@
     @import url('../blocks/show-image/__img/show-image__img.css');
     @import url('../blocks/show-image/__subscription/show-image__subscription.css');
     @import url('../blocks/show-image/__close/show-image__close.css');
+    @import url('../blocks/popupAvatar/_container/popupAvatar_container.css');

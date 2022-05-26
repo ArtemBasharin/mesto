@@ -8,9 +8,11 @@ export default class PopupWithConfirm extends Popup {
     }
 
     _setEventListeners() {
-        super._setEventListeners();
+        super.setEventListeners();
         this._deleteCardButton.addEventListener('click', this._confirmDelete);
     }
+
+    setEventListeners() {}
 
     _confirmDelete = () => {
         this._handleTrashButtonClick();
@@ -20,5 +22,4 @@ export default class PopupWithConfirm extends Popup {
         this._setEventListeners();
         super.showPopup();
     }
-
 }

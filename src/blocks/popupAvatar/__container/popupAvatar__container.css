@@ -1,4 +1,4 @@
-.popupAvatar_container {
+.popupAvatar__container {
     width: 430px;
     height: 330px;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {
-    .popupAvatar_container {
+    .popupAvatar__container {
         margin: auto;
         width: 282px;
         height: 322px;

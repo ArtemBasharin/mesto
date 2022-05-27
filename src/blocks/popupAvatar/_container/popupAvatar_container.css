@@ -1,4 +1,16 @@
 .popupAvatar_container {
-    width: 100%;
-    min-height: 272px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 430px;
+    margin: auto;
+    position: relative;
+    color: #000;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+@media screen and (max-width: 767px) {
+    .popupAvatar_container {
+        max-width: 282px;
+        min-height: 322px;
+    }
 }

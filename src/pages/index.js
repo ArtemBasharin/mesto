@@ -168,9 +168,9 @@ const popupWithFormAvatar = new PopupWithForm(
     popupAvatarSelector,
     (info) => {
         renderLoading(popupAvatarSelector, true);
-        api.setAvatar(info.avatarLink)
+        console.log(userInfo);
+        api.setAvatar(info.avatar)
             .then((data) => {
-                console.log(data);
                 userInfo.setUserInfo(data);
             })
             .catch((err) => {
@@ -182,6 +182,7 @@ const popupWithFormAvatar = new PopupWithForm(
 );
 
 editAvatarButton.addEventListener('click', function() {
+    console.log(userInfo);
     popupWithFormAvatar.showPopup();
 });
 

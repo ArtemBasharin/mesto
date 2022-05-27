@@ -1,10 +1,10 @@
-.popupConfirm_confirm {
+.popupConfirm__confirm {
     margin-left: 36px;
     margin-top: 0;
 }
 
 @media screen and (max-width: 767px) {
-    .popupConfirm_confirm {
+    .popupConfirm__confirm {
         margin: 0 auto 36px auto;
     }
 }

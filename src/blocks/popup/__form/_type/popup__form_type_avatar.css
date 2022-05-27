@@ -1,5 +1,6 @@
 .popup__form_type_avatar {
-    height: 210px;
+    width: 394px;
+    height: 272px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 720px) {

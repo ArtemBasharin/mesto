@@ -1,0 +1,16 @@
+/* .popupAvatar__form {
+    width: 100%;
+    height: 100%;
+    color: #000;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+@media screen and (min-width: 320px) and (max-width: 720px) {
+    .popupAvatar__form {
+        padding: 0 22px;
+        margin: auto;
+        width: 282px;
+        height: 322px;
+    }
+} */

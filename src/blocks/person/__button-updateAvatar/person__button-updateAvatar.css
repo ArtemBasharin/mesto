@@ -1,0 +1,26 @@
+.person__button-updateAvatar {
+    /* height: 26px;
+    width: 26px; */
+    height: 100%;
+    width: 100%;
+    background: url('../../../images/Avatar.svg') center transparent no-repeat;
+    margin: auto;
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 999;
+    cursor: pointer;
+    transition: opacity 1s ease;
+    outline-style: none;
+    position: absolute;
+    /* top: 47px; */
+    /* left: 47px; */
+}
+
+.person__button-updateAvatar:hover {
+    opacity: 1;
+}
+
+.person__button-updateAvatar:hover~.person__image {
+    opacity: 0.2;
+}

@@ -16,7 +16,10 @@
 
         <section class="person">
             <div class="person__section">
-                <img class="person__image" src=" " alt="Фото профиля">
+                <div class="person__avatarSection">
+                    <button type="button" class="person__button-updateAvatar"></button>
+                    <img class="person__image" src=" " alt="Фото профиля">
+                </div>
                 <div class="person__description">
                     <div class="person__subsection">
                         <h1 class="person__name"></h1>
@@ -101,16 +104,16 @@
         </div>
 
 
-
         <div class="popup popupAvatar">
             <div class="popupAvatar_container">
-                <h3 class="popup__title popupAvatar_title">Обновить аватар</h3>
-                <form name="popupAvatar-form" class="popupAvatar_form popup__form popup__form_type_avatar">
-                    <input id="avatarLink" type="url" name="avatarLink" class="popup__input popupAvatar__input_type_avatar-link" placeholder="Ссылка на картинку" required>
+                <button type="button" class="popup__close button_type_close-avatar "></button>
+                <form name="popupAvatar-form" class="popup__form popup__form_type_avatar popupAvatar_form ">
+                    <h3 class="popup__title popupAvatar_title">Обновить аватар</h3>
+                    <input id="avatarLink" type="url" name="avatar" class="popup__input popupAvatar__input_type_avatar-link" placeholder="Ссылка на картинку" required>
                     <span class="popupAvatar__input_type_avatar-link-error avatarLink-error " id="avatarLink-error"> </span>
                     <button type="submit" class="button button_type_avatar popup__submit-button">Сохранить</button>
                 </form>
-                <button type="button" class="popup__close button_type_close-avatar "></button>
+
             </div>
         </div>
 

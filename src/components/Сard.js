@@ -38,9 +38,10 @@ export default class Card {
 
     //////////
     _toggleLike() {
+        this._elemLike.classList.toggle('card__like-button_black');
+
         this._handleLikeClick(this._cardId, this.isLiked)
             .then((data) => {
-                this._elemLike.classList.toggle('card__like-button_black');
                 this.isLiked = !this.isLiked;
                 this._likesCounter.textContent = data.likes.length;
             })
@@ -49,8 +50,8 @@ export default class Card {
             });
     }
 
-    /////////////
-    markUserLikes() { ///////////пока параметр не нужен
+
+    markUserLikes() {
         if (this._likes.some(person => person._id === this._userId)) {
             this._elemLike.classList.add('card__like-button_black');
         }

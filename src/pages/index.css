@@ -12,6 +12,9 @@
     @import url('../blocks/person/__name/person__name.css');
     @import url('../blocks/person/__section/person__section.css');
     @import url('../blocks/person/__subsection/person__subsection.css');
+    @import url('../blocks/person/__button-updateAvatar/person__button-updateAvatar.css');
+    @import url('../blocks/person/__avatarSection/person__avatarSection.css');
+    @import url('../blocks/person/__description/person__description.css');
     @import url('../blocks/add-button/add-button.css');
     @import url('../blocks/cards/cards.css');
     @import url('../blocks/card/card.css');
@@ -63,4 +66,8 @@
     @import url('../blocks/show-image/__subscription/show-image__subscription.css');
     @import url('../blocks/show-image/__close/show-image__close.css');
     @import url('../blocks/popupAvatar/_container/popupAvatar_container.css');
+    @import url('../blocks/popupAvatar/__title/popupAvatar__title.css');
     @import url('../blocks/popupAvatar/_form/popupAvatar_form.css');
+    @import url('../blocks/popupAvatar/__input/_type/popupAvatar__input_type_avatar-link.css');
+    @import url('../blocks/popupAvatar/__input/_type/popupAvatar__input_type_avatar-link-error.css');
+    @import url('../blocks/popupAvatar/_type/button_type_avatar.css');

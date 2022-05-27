@@ -17,12 +17,13 @@ const adderPopupSelector = '.cardPopup';
 const popupAvatarSelector = '.popupAvatar';
 const imagePopupSelector = '.show-image';
 const popupConfirmSelector = '.popupConfirm';
-const editAvatarButton = document.querySelector('.person__image');
-const updateAvatarButton = document.querySelector('.button_type_avatar');
+const editAvatarButton = document.querySelector('.person__button-updateAvatar');
+// const updateAvatarButton = document.querySelector('.person__image');
+const linkContainer = document.querySelector('.popupAvatar__input_type_avatar-link');
 
 const name = '.person__name';
 const employment = '.person__employment';
-const avatar = '.person__image';
+const avatar = document.querySelector('.person__image');
 
 
 
@@ -74,7 +75,6 @@ function createCard(data) {
                 return api.likeCard(cardId, isLiked)
             },
             handleDeleteClick: (cardInstance) => {
-                console.log(cardInstance)
                 popupConfirm.cardInstance = cardInstance;
                 popupConfirm.showPopup()
             }
@@ -110,12 +110,13 @@ api.getInitialCards()
 
 const adderPopup = new PopupWithForm(
     '.cardPopup',
-    (info) => {
+    (info, closePopup) => {
         renderLoading(adderPopupSelector, true);
         api.postNewCard(info.name, info.link)
             .then((data) => {
                 const cardElement = createCard(data);
                 cardList.addItem(cardElement);
+                closePopup()
             })
             .catch((err) => {
                 console.log(err);
@@ -137,11 +138,12 @@ adderButton.addEventListener('click', () => {
 
 
 const userPopup = new PopupWithForm(
-    profilePopupSelector, (info) => {
+    profilePopupSelector, (info, closePopup) => {
         renderLoading(profilePopupSelector, true);
         api.setUserInfo(info.name, info.employment)
             .then((data) => {
                 userInfo.setUserInfo(data);
+                closePopup()
             })
             .catch((err) => {
                 console.log(err);
@@ -166,12 +168,12 @@ profileButton.addEventListener('click', () => {
 
 const popupWithFormAvatar = new PopupWithForm(
     popupAvatarSelector,
-    (info) => {
+    (info, closePopup) => {
         renderLoading(popupAvatarSelector, true);
-        console.log(userInfo);
         api.setAvatar(info.avatar)
             .then((data) => {
                 userInfo.setUserInfo(data);
+                closePopup()
             })
             .catch((err) => {
                 console.log(err)
@@ -181,11 +183,17 @@ const popupWithFormAvatar = new PopupWithForm(
     }
 );
 
+/////////////////////////
+popupWithFormAvatar.setEventListeners();
+
 editAvatarButton.addEventListener('click', function() {
-    console.log(userInfo);
+    const userData = userInfo.getUserInfo();
+    userData.avatar = linkContainer.value;
+    console.log(userData.avatar);
+    validators['popupAvatar-form'].resetValidation();
     popupWithFormAvatar.showPopup();
 });
-
+////////////////////////////
 
 
 

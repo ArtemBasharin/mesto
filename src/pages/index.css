@@ -68,6 +68,6 @@
     @import url('../blocks/popupAvatar/__container/popupAvatar__container.css');
     @import url('../blocks/popupAvatar/__title/popupAvatar__title.css');
     @import url('../blocks/popupAvatar/__form/popupAvatar__form.css');
-    @import url('../blocks/popupAvatar/__input/popupAvatar__input_avatar-link.css');
-    @import url('../blocks/popupAvatar/__input/popupAvatar__input_avatar-link-error.css');
+    @import url('../blocks/popupAvatar/__input/popupAvatar__input_avatarLink.css');
+    @import url('../blocks/popupAvatar/__input/popupAvatar__input_avatarLink-error.css');
     @import url('../blocks/popupAvatar/_type/button_type_avatar.css');

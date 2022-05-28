@@ -7,36 +7,23 @@ import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Api from '../components/Api.js';
-
-const profileButton = document.querySelector('.person__edit-button');
-const profilePopupSelector = '.profile-popup';
-const nameContainer = document.querySelector('.popup__input_type_name');
-const employmentContainer = document.querySelector('.popup__input_type_employment');
-const adderButton = document.querySelector('.add-button');
-const adderPopupSelector = '.cardPopup';
-const popupAvatarSelector = '.popupAvatar';
-const imagePopupSelector = '.show-image';
-const popupConfirmSelector = '.popupConfirm';
-const editAvatarButton = document.querySelector('.person__button-updateAvatar');
-// const updateAvatarButton = document.querySelector('.person__image');
-const linkContainer = document.querySelector('.popup__input_link');
-
-const name = '.person__name';
-const employment = '.person__employment';
-const avatar = document.querySelector('.person__image');
-
-
-
-
-const conf = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input_type_error-active'
-};
-
+import {
+    profileButton,
+    profilePopupSelector,
+    nameContainer,
+    employmentContainer,
+    adderButton,
+    adderPopupSelector,
+    popupAvatarSelector,
+    imagePopupSelector,
+    popupConfirmSelector,
+    editAvatarButton,
+    linkContainer,
+    name,
+    employment,
+    avatar,
+    conf
+} from '../utils/constants.js';
 
 const api = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-41", /////////////проверить
@@ -51,14 +38,14 @@ const api = new Api({
 
 const userInfo = new UserInfo(name, employment, avatar);
 let userId;
-api.getUserInfo()
-    .then((data) => {
-        userId = data._id;
-        userInfo.setUserInfo(data);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+// api.getUserInfo()
+//     .then((data) => {
+//         userId = data._id;
+//         userInfo.setUserInfo(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
 
 const popupImage = new PopupWithImage(imagePopupSelector);
 popupImage.setEventListeners()
@@ -76,35 +63,36 @@ function createCard(data) {
             },
             handleDeleteClick: (cardInstance) => {
                 popupConfirm.cardInstance = cardInstance;
-                popupConfirm.showPopup()
+                popupConfirm.setEventListeners();
+                popupConfirm.showPopup();
             }
         }
     }, '.template')
     const cardElement = card.generateCard();
-    card.markUserLikes(cardElement);
-    card.updateLikes(cardElement);
+    // card.markUserLikes(cardElement);
+    // card.updateLikes(cardElement);
     return cardElement;
 }
 
 
 
-let cardList;
 
-api.getInitialCards()
-    .then((data) => {
-        cardList = new Section({
-                items: data,
-                renderer: (item) => {
-                    const cardElement = createCard(item);
-                    cardList.addItem(cardElement);
-                }
-            },
-            '.cards');
-        cardList.renderItems();
-    })
-    .catch((err) => {
-        console.log(err)
-    });
+
+// api.getInitialCards()
+//     .then((data) => {
+//         cardList = new Section({
+//                 items: data,
+//                 renderer: (item) => {
+//                     const cardElement = createCard(item);
+//                     cardList.addItem(cardElement);
+//                 }
+//             },
+//             '.cards');
+//         cardList.renderItems();
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     });
 
 
 
@@ -188,7 +176,7 @@ popupWithFormAvatar.setEventListeners();
 
 editAvatarButton.addEventListener('click', function() {
     const userData = userInfo.getUserInfo();
-    userData.avatar = linkContainer.value;
+    // userData.avatar = linkContainer.value; 
     console.log(userData.avatar);
     validators['popupAvatar-form'].resetValidation();
     popupWithFormAvatar.showPopup();
@@ -240,3 +228,52 @@ function enableValidation(conf) {
 };
 
 enableValidation(conf);
+
+
+let cardList;
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then((data) => {
+        userId = data[0]._id;
+        userInfo.setUserInfo(data[0]);
+
+        cardList = new Section({
+                items: data[1],
+                renderer: (item) => {
+                    const cardElement = createCard(item);
+                    cardList.addItem(cardElement);
+                }
+            },
+            '.cards');
+        cardList.renderItems(data[1]);
+
+    })
+    .catch((err) => console.log(err));
+
+
+
+// api.getInitialCards()
+//     .then((data) => {
+//         cardList = new Section({
+//                 items: data,
+//                 renderer: (item) => {
+//                     const cardElement = createCard(item);
+//                     cardList.addItem(cardElement);
+//                 }
+//             },
+//             '.cards');
+//         cardList.renderItems();
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     });
+
+
+// api.getUserInfo()
+//     .then((data) => {
+//         userId = data._id;
+//         userInfo.setUserInfo(data);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })

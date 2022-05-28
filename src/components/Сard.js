@@ -38,10 +38,11 @@ export default class Card {
 
     //////////
     _toggleLike() {
-        this._elemLike.classList.toggle('card__like-button_black');
+
 
         this._handleLikeClick(this._cardId, this.isLiked)
             .then((data) => {
+                this._elemLike.classList.toggle('card__like-button_black');
                 this.isLiked = !this.isLiked;
                 this._likesCounter.textContent = data.likes.length;
             })
@@ -95,6 +96,8 @@ export default class Card {
         this._elemImage.alt = this._title;
         this._allowDeletion();
         this._setEventListeners();
+        this.markUserLikes(this);
+        this.updateLikes();
         return this._element;
     }
 }

@@ -19,7 +19,7 @@ const imagePopupSelector = '.show-image';
 const popupConfirmSelector = '.popupConfirm';
 const editAvatarButton = document.querySelector('.person__button-updateAvatar');
 // const updateAvatarButton = document.querySelector('.person__image');
-const linkContainer = document.querySelector('.popupAvatar__form_inputlink');
+const linkContainer = document.querySelector('.form__input_link');
 
 const name = '.person__name';
 const employment = '.person__employment';

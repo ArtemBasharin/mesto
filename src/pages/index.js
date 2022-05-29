@@ -18,7 +18,6 @@ import {
     imagePopupSelector,
     popupConfirmSelector,
     editAvatarButton,
-    linkContainer,
     name,
     employment,
     avatar,
@@ -26,29 +25,21 @@ import {
 } from '../utils/constants.js';
 
 const api = new Api({
-    url: "https://mesto.nomoreparties.co/v1/cohort-41", /////////////проверить
+    url: "https://mesto.nomoreparties.co/v1/cohort-41",
     headers: {
         "content-type": "application/json",
-        "authorization": "37e0e7dd-b074-4ce5-8552-85f100e53932", ///////////////проверить
+        "authorization": "37e0e7dd-b074-4ce5-8552-85f100e53932",
     },
 });
 
 
-
-
 const userInfo = new UserInfo(name, employment, avatar);
 let userId;
-// api.getUserInfo()
-//     .then((data) => {
-//         userId = data._id;
-//         userInfo.setUserInfo(data);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
+
 
 const popupImage = new PopupWithImage(imagePopupSelector);
 popupImage.setEventListeners()
+
 
 function createCard(data) {
     const card = new Card({
@@ -63,37 +54,14 @@ function createCard(data) {
             },
             handleDeleteClick: (cardInstance) => {
                 popupConfirm.cardInstance = cardInstance;
-                popupConfirm.setEventListeners();
+
                 popupConfirm.showPopup();
             }
         }
     }, '.template')
     const cardElement = card.generateCard();
-    // card.markUserLikes(cardElement);
-    // card.updateLikes(cardElement);
     return cardElement;
 }
-
-
-
-
-
-// api.getInitialCards()
-//     .then((data) => {
-//         cardList = new Section({
-//                 items: data,
-//                 renderer: (item) => {
-//                     const cardElement = createCard(item);
-//                     cardList.addItem(cardElement);
-//                 }
-//             },
-//             '.cards');
-//         cardList.renderItems();
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     });
-
 
 
 const adderPopup = new PopupWithForm(
@@ -116,13 +84,11 @@ const adderPopup = new PopupWithForm(
 );
 
 
-
 adderPopup.setEventListeners();
 adderButton.addEventListener('click', () => {
     validators['adder-form'].resetValidation();
     adderPopup.showPopup();
 });
-
 
 
 const userPopup = new PopupWithForm(
@@ -141,8 +107,8 @@ const userPopup = new PopupWithForm(
     }
 );
 
-
 userPopup.setEventListeners();
+
 
 profileButton.addEventListener('click', () => {
     const userData = userInfo.getUserInfo();
@@ -171,25 +137,23 @@ const popupWithFormAvatar = new PopupWithForm(
     }
 );
 
-/////////////////////////
 popupWithFormAvatar.setEventListeners();
+
+
 
 editAvatarButton.addEventListener('click', function() {
     const userData = userInfo.getUserInfo();
-    // userData.avatar = linkContainer.value; 
     console.log(userData.avatar);
     validators['popupAvatar-form'].resetValidation();
     popupWithFormAvatar.showPopup();
 });
-////////////////////////////
-
-
 
 
 const popupConfirm = new PopupWithConfirm(
     popupConfirmSelector,
     () => {
         const cardId = popupConfirm.cardInstance._cardId;
+
         api.deleteCard(cardId)
             .then(() => {
                 popupConfirm.cardInstance.deleteCard();
@@ -198,10 +162,11 @@ const popupConfirm = new PopupWithConfirm(
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
     }
 );
 
+popupConfirm.setEventListeners();
 
 
 function renderLoading(popupSelector, isLoading) {
@@ -214,8 +179,8 @@ function renderLoading(popupSelector, isLoading) {
 };
 
 
-
 const validators = {};
+
 
 function enableValidation(conf) {
     const formList = Array.from(document.querySelectorAll(conf.formSelector));
@@ -227,10 +192,12 @@ function enableValidation(conf) {
     });
 };
 
+
 enableValidation(conf);
 
 
 let cardList;
+
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then((data) => {
@@ -249,31 +216,3 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     })
     .catch((err) => console.log(err));
-
-
-
-// api.getInitialCards()
-//     .then((data) => {
-//         cardList = new Section({
-//                 items: data,
-//                 renderer: (item) => {
-//                     const cardElement = createCard(item);
-//                     cardList.addItem(cardElement);
-//                 }
-//             },
-//             '.cards');
-//         cardList.renderItems();
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     });
-
-
-// api.getUserInfo()
-//     .then((data) => {
-//         userId = data._id;
-//         userInfo.setUserInfo(data);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })

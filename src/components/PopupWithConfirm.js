@@ -17,9 +17,4 @@ export default class PopupWithConfirm extends Popup {
     _confirmDelete = () => {
         this._handleTrashButtonClick();
     }
-
-
-    showPopup() {
-        super.showPopup();
-    }
 }

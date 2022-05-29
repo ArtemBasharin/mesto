@@ -13,7 +13,6 @@ export default class Card {
     }
 
 
-    /////////////
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector)
             .content.querySelector('.card')
@@ -22,7 +21,6 @@ export default class Card {
     }
 
 
-    /////////////
     _setEventListeners() {
         this._elemLike.addEventListener('click', () => {
             this._toggleLike();
@@ -36,10 +34,7 @@ export default class Card {
     }
 
 
-    //////////
     _toggleLike() {
-
-
         this._handleLikeClick(this._cardId, this.isLiked)
             .then((data) => {
                 this._elemLike.classList.toggle('card__like-button_black');
@@ -47,7 +42,7 @@ export default class Card {
                 this._likesCounter.textContent = data.likes.length;
             })
             .catch((err) => {
-                console.log(err); //////////////вывести ошибку!!!!
+                console.log(err);
             });
     }
 
@@ -58,23 +53,19 @@ export default class Card {
         }
     }
 
-    ///////////
+
     updateLikes() {
         this._likesCounter.textContent = this._likes.length;
 
     }
 
 
-    //////////
     deleteCard() {
         this._element.remove();
         this._element = null;
     }
 
 
-
-
-    /////////////////
     _allowDeletion() {
         if (this._userId !== this._ownerId) {
             this._elemTrash.classList.add('card__trash-button_hidden')
@@ -84,7 +75,6 @@ export default class Card {
     }
 
 
-    //////////////
     generateCard() {
         this._element = this._getTemplate();
         this._elemImage = this._element.querySelector('.card__image');
